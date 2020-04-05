@@ -40,6 +40,17 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(X == Y, result: false)
         eval(X == 10, result: false)
         eval(123 == X, result: true)
+        
+        eval(X == INT(x), result: true)
+        eval(X == INT(y), result: false)
+        eval(Y == INT(y), result: true)
+        
+        eval(X < Y, result: x < y)
+        eval(X <= Y, result: x <= y)
+        eval(X > Y, result: x > y)
+        eval(X >= Y, result: x >= y)
+        eval(X < INT(x), result: false)
+        eval(X <= INT(x), result: true)
     }
 
     static var allTests = [
