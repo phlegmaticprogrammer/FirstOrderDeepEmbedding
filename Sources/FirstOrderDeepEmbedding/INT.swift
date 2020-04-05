@@ -79,9 +79,7 @@ public final class INT : ASort, ExpressibleByIntegerLiteral {
     override public var constants : [ConstName : Signature] {
         return INT.h.constants
     }
-    
-    //private f
-    
+        
     override public func eval(name : ConstName, count : Int, nativeArgs : (Int) -> Any) -> Any {
         switch name.code {
         case INT.h.C_uminus.code: return -(nativeArgs(0) as! Native)
