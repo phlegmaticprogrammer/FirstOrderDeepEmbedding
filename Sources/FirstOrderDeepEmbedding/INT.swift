@@ -58,6 +58,11 @@ public final class INT : ASort, ExpressibleByIntegerLiteral {
         super.init()
         set(inhabitant: .Native(value: integerLiteral, sort: sortname))
     }
+    
+    public init(_ integer : Native) {
+        super.init()
+        set(inhabitant: .Native(value: integer, sort: sortname))
+    }
 
     public override func setDefaultInhabitant() {
         set(inhabitant: .Native(value: 0, sort: sortname))

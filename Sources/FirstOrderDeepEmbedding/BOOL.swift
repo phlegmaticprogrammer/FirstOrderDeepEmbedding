@@ -48,6 +48,12 @@ public final class BOOL : ASort, ExpressibleByBooleanLiteral {
         set(inhabitant: booleanLiteral ? BOOL.h.T_true : BOOL.h.T_false)
     }
 
+    public init(_ boolean: Native) {
+        super.init()
+        set(inhabitant: boolean ? BOOL.h.T_true : BOOL.h.T_false)
+    }
+
+    
     public override func setDefaultInhabitant() {
         set(inhabitant: BOOL.h.T_false)
     }
