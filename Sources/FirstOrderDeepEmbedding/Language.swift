@@ -23,11 +23,7 @@ public struct ConstName : Hashable, CustomStringConvertible {
     }
     
     public var description : String {
-        if let n = name {
-            return "\(sort).\(n)"
-        } else {
-            return "\(sort).(code=\(code))"
-        }
+        return "\(sort).\(name ?? "(code=\(code)")"
     }
 }
 

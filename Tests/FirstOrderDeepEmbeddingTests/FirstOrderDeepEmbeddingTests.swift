@@ -215,6 +215,8 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
     }
         
     func testLanguage() {
+        let X : INT = 10
+        XCTAssertEqual(language.customNamesOf(term: (X + 1).inhabitant), [])
     }
 
     static var allTests = [
