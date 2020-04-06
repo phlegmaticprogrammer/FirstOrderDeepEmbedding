@@ -21,7 +21,7 @@ open class Enumeration<EnumBase : CaseIterable & Hashable> : ASort {
     }
     
     open override var sortname : String {
-        return String(describing: type(of: self))
+        return String(describing: Self.self)
     }
     
     public override func setDefaultInhabitant() {
@@ -34,11 +34,11 @@ open class Enumeration<EnumBase : CaseIterable & Hashable> : ASort {
     }
     
     public static func ==(left : Enumeration, right : EnumBase) -> BOOL {
-        return BOOL.equals(left, Case(right))
+        return BOOL.equals(left, type(of: left).Case(right))
     }
         
     public static func ==(left : EnumBase, right : Enumeration) -> BOOL {
-        return BOOL.equals(Case(left), right)
+        return BOOL.equals(type(of: right).Case(left), right)
     }
 
     public static func !=(left : Enumeration, right : Enumeration) -> BOOL {
@@ -46,39 +46,27 @@ open class Enumeration<EnumBase : CaseIterable & Hashable> : ASort {
     }
     
     public static func !=(left : Enumeration, right : EnumBase) -> BOOL {
-        return !BOOL.equals(left, Case(right))
+        return !BOOL.equals(left, type(of: left).Case(right))
     }
         
     public static func !=(left : EnumBase, right : Enumeration) -> BOOL {
-        return !BOOL.equals(Case(left), right)
+        return !BOOL.equals(type(of: right).Case(left), right)
     }
 
     public override func eval(name: ConstName, count: Int, nativeArgs: (Int) -> Any) -> Any {
         fatalEval(name, count, nativeArgs)
     }
 
-    public func In <S : Sequence>(_ xs : S) -> BOOL where S.Element == Self {
-        var result : BOOL = false
-        for x in xs {
-            result = (result || self == x)
-        }
-        return result
-    }
-
-    public func `in` <S : Sequence>(_ xs : S) -> BOOL where S.Element == EnumBase {
+    public func `in`<S : Sequence>(_ xs : S) -> BOOL where S.Element == EnumBase {
         var result : BOOL = false
         for x in xs {
             result = (result || self == Self.Case(x))
         }
         return result
     }
-    
-    public func Match<T : Sort>(_ cases : Case<Enumeration, T>..., default : T? = nil) -> T {
-        var t = `default` ?? T.default()
-        for c in cases.reversed() {
-            t = (self == c.pattern).If(c.result, t)
-        }
-        return t
+
+    public func `in`(_ xs : EnumBase...) -> BOOL {
+        return `in`(xs)
     }
 
     public func match<T : Sort>(_ cases : Case<EnumBase, T>..., default : T? = nil) -> T {

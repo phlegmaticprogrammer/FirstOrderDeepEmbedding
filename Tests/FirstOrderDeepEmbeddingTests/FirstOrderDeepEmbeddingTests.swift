@@ -1,6 +1,13 @@
 import XCTest
 import FirstOrderDeepEmbedding
 
+func AssertEqual<T : Equatable>(_ a : @autoclosure () -> T, _ b : @autoclosure() -> T, _ message : String = "") {
+    XCTAssertEqual(a(), b(), message)
+    if a() != b() {
+        fatalError()
+    }
+}
+
 final class FirstOrderDeepEmbeddingTests: XCTestCase {
     
     class Suit : Enumeration<Suit.Base> {
@@ -8,14 +15,14 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         enum Base : CaseIterable {
             case diamonds, hearts, spades, clubs
         }
-        
-        static let diamonds = Suit.Case(.diamonds)
-        static let hearts = Suit.Case(.hearts)
-        static let spades = Suit.Case(.spades)
-        static let clubs = Suit.Case(.clubs)
+                
+        static let diamonds = Case(.diamonds)
+        static let hearts = Case(.hearts)
+        static let spades = Case(.spades)
+        static let clubs = Case(.clubs)
         
         required init() {}
-            
+                    
     }
 
     class Rank : Enumeration<Rank.Base> {
@@ -26,8 +33,11 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         
         required init() {}
         
+        override var sortname : SortName {
+            return "TheRank"
+        }
+        
     }
-    
     
     class Card : Record {
         @Field var rank : Rank
@@ -47,7 +57,7 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
 
     func eval<T : ASort>(_ t : T, result : T.Native) {
         XCTAssert(language.check(t), "inhabitant = \(t.inhabitant)")
-        XCTAssertEqual(language.eval(t) as! T.Native, result, "inhabitant = \(t.inhabitant)")
+        AssertEqual(language.eval(t) as! T.Native, result, "inhabitant = \(t.inhabitant)")
     }
     
     func testINT() {
@@ -99,9 +109,9 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(X < INT(x), result: false)
         eval(X <= INT(x), result: true)
         
-        eval(X.in([123, 27]), result: true)
-        eval(Y.in([123, 27]), result: true)
-        eval((X + Y).in([123, 27]), result: false)
+        eval(X.in(123, 27), result: true)
+        eval(Y.in(123, 27), result: true)
+        eval((X + Y).in(123, 27), result: false)
         
         eval(X.inRange(0, 100), result: false)
         eval(Y.inRange(0, 100), result: true)
@@ -154,12 +164,9 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(f != f, result: false)
     }
     
-    
     func testEnumeration() {
         XCTAssertFalse(Language.standard.check(Suit.Case(.diamonds)))
         XCTAssertTrue(language.check(Suit.Case(.diamonds)))
-        XCTAssert(Suit.Case(.diamonds) is Suit)
-        XCTAssert(Suit.diamonds is Suit)
         eval(Suit.Case(.diamonds), result: .diamonds)
         eval(Suit.Case(.hearts), result: .hearts)
         eval(Suit.Case(.spades), result: .spades)
@@ -181,9 +188,11 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(suit == suit, result: true)
         eval(suit != suit, result: false)
         eval(suit == .diamonds, result: true)
-        eval(suit == .hearts, result: true)
+        eval(.diamonds == suit, result: true)
+        eval(suit == .hearts, result: false)
         eval(suit != .diamonds, result: false)
-        eval(suit != .hearts, result: false)
+        eval(.diamonds != suit, result: false)
+        eval(suit != .hearts, result: true)
         func points(_ suit : Suit) -> INT {
             return suit.match(.diamonds => 9, .hearts => 10, .spades => 11, .clubs => 12)
         }
@@ -191,17 +200,15 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(points(.hearts), result: 10)
         eval(points(.spades), result: 11)
         eval(points(.clubs), result: 12)
-        func Points(_ suit : Suit) -> INT {
-            return suit.Match(Suit.diamonds => 9, Suit.hearts => 10, Suit.spades => 11, Suit.clubs => 12)
-        }
-        eval(Points(.diamonds), result: 9)
-        eval(Points(.hearts), result: 10)
-        eval(Points(.spades), result: 11)
-        eval(Points(.clubs), result: 12)
         let suit2 : Suit = Suit.clubs.match()
         XCTAssertEqual(suit2.sortname, "Suit")
         eval(suit2, result: .diamonds)
         eval(Suit.clubs.match(default: Suit.hearts), result: .hearts)
+        XCTAssertEqual(Rank.default().sortname, "TheRank")
+        eval(Rank.default(), result: .two)
+        eval(suit.in(.clubs, .spades), result: false)
+        eval(suit.in(.clubs, .diamonds), result: true)
+        eval(suit.in(.diamonds, .clubs), result: true)
     }
 
     func testRecord() {

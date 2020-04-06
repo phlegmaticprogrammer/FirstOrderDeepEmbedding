@@ -166,6 +166,10 @@ public final class INT : ASort, ExpressibleByIntegerLiteral {
         }
         return result
     }
+
+    public func `in`(_ xs : INT...) -> BOOL {
+        return `in`(xs)
+    }
     
     public func inRange(_ lower : INT, _ upper : INT) -> BOOL {
         return lower <= self && self <= upper
