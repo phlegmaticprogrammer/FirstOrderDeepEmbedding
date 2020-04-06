@@ -3,9 +3,9 @@ import FirstOrderDeepEmbedding
 
 func AssertEqual<T : Equatable>(_ a : @autoclosure () -> T, _ b : @autoclosure() -> T, _ message : String = "") {
     XCTAssertEqual(a(), b(), message)
-    if a() != b() {
+    /*if a() != b() {
         fatalError()
-    }
+    }*/
 }
 
 final class FirstOrderDeepEmbeddingTests: XCTestCase {
@@ -42,6 +42,32 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
     class Card : Record {
         @Field var rank : Rank
         @Field var suit : Suit
+        
+        required init() {}
+
+        init(rank : Rank, suit : Suit) {
+            super.init()
+            self.rank = rank
+            self.suit = suit
+            setDefaultInhabitant()
+        }
+    }
+    
+    class Player : Record {
+        @Field var card1 : Card
+        @Field var card2 : Card
+        @Field var stack : INT
+        
+        required init() {}
+        
+        init(card1 : Card, card2 : Card, stack : INT = 10000) {
+            super.init()
+            self.card1 = card1
+            self.card2 = card2
+            self.stack = stack
+            setDefaultInhabitant()
+        }
+
     }
 
     lazy var language : Language = languageForTesting()
@@ -212,6 +238,19 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
     }
 
     func testRecord() {
+        let card1 = Card(rank: .Case(.ace), suit: .spades)
+        let card2 = Card(rank: .Case(.king), suit: .spades)
+        let player1 = Player(card1: card1, card2: card2)
+        let player2 = Player(card1: card1, card2: card2)
+        let player3 = Player(card1: card1, card2: card2, stack: 8)
+        let player4 = Player(card1: card2, card2: card1)
+        
+        eval(player1.card1.rank, result: .ace)
+        eval(player1.card2.rank, result: .king)
+        eval(player1.card1 == player2.card1, result: true)
+        eval(player1.card1 != player2.card2, result: true)
+
+
     }
         
     func testLanguage() {
