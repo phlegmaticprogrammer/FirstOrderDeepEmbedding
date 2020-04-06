@@ -3,9 +3,15 @@ import Foundation
 public typealias SortName = String
 
 public struct ConstName : Hashable, CustomStringConvertible {
-    let sort : SortName
-    let name : String?
-    let code : Int
+    public let sort : SortName
+    public let name : String?
+    public let code : Int
+    
+    public init(sort : SortName, name : String?, code : Int) {
+        self.sort = sort
+        self.name = name
+        self.code = code
+    }
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(sort)
@@ -26,8 +32,12 @@ public struct ConstName : Hashable, CustomStringConvertible {
 }
 
 public struct Signature : Hashable {
-    let args : [SortName?]
-    let result : SortName?
+    public let args : [SortName?]
+    public let result : SortName?
+    public init(args : [SortName?], result : SortName?) {
+        self.args = args
+        self.result = result
+    }
 }
 
 public indirect enum Term : Hashable, CustomStringConvertible {
@@ -38,7 +48,7 @@ public indirect enum Term : Hashable, CustomStringConvertible {
     public var description : String {
         switch self {
         case let .Var(name: name): return "\(name)"
-        case let .Native(value : value, sort : _): return "{\(value)}"
+        case let .Native(value : value, sort : sort): return "\(value) : \(sort)"
         case let .App(const, args):
             guard !args.isEmpty else { return const.description }
             var descr = const.description
@@ -132,7 +142,8 @@ public class Language {
     
     public func check<T : Sort>(_ t : T) -> Bool {
         guard t.isInhabited else { return false }
-        return check(customEnv: {_ in nil}, term: t.inhabitant) == t.sortname
+        let sortname = check(customEnv: {_ in nil}, term: t.inhabitant)
+        return sortname == t.sortname
     }
     
     public func eval(env : (AnyHashable) -> Any?, term : Term) -> Any {

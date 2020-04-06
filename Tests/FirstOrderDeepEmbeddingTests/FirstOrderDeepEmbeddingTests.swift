@@ -2,11 +2,51 @@ import XCTest
 import FirstOrderDeepEmbedding
 
 final class FirstOrderDeepEmbeddingTests: XCTestCase {
+    
+    class Suit : Enumeration<Suit.Base> {
+        
+        enum Base : CaseIterable {
+            case diamonds, hearts, spades, clubs
+        }
+        
+        static let diamonds = Suit.Case(.diamonds)
+        static let hearts = Suit.Case(.hearts)
+        static let spades = Suit.Case(.spades)
+        static let clubs = Suit.Case(.clubs)
+        
+        required init() {}
+            
+    }
 
-    let language = Language.standard
+    class Rank : Enumeration<Rank.Base> {
+        
+        enum Base : CaseIterable {
+            case two, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace
+        }
+        
+        required init() {}
+        
+    }
+    
+    
+    class Card : Record {
+        @Field var rank : Rank
+        @Field var suit : Suit
+    }
+
+    lazy var language : Language = languageForTesting()
+    
+    private func languageForTesting() -> Language {
+        let language = Language.standard
+        language.add(sort: Rank())
+        language.add(sort: Suit())
+        language.add(sort: Card())
+        return language
+    }
+    
 
     func eval<T : ASort>(_ t : T, result : T.Native) {
-        XCTAssert(language.check(t))
+        XCTAssert(language.check(t), "inhabitant = \(t.inhabitant)")
         XCTAssertEqual(language.eval(t) as! T.Native, result, "inhabitant = \(t.inhabitant)")
     }
     
@@ -114,14 +154,61 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(f != f, result: false)
     }
     
-    func testRecord() {
-        
-    }
     
     func testEnumeration() {
+        XCTAssertFalse(Language.standard.check(Suit.Case(.diamonds)))
+        XCTAssertTrue(language.check(Suit.Case(.diamonds)))
+        XCTAssert(Suit.Case(.diamonds) is Suit)
+        XCTAssert(Suit.diamonds is Suit)
+        eval(Suit.Case(.diamonds), result: .diamonds)
+        eval(Suit.Case(.hearts), result: .hearts)
+        eval(Suit.Case(.spades), result: .spades)
+        eval(Suit.Case(.clubs), result: .clubs)
+        eval(Suit.diamonds, result: .diamonds)
+        eval(Suit.hearts, result: .hearts)
+        eval(Suit.spades, result: .spades)
+        eval(Suit.clubs, result: .clubs)
+        eval(Suit.diamonds == Suit.Case(.diamonds), result: true)
+        eval(Suit.diamonds == Suit.diamonds, result: true)
+        eval(Suit.hearts == Suit.hearts, result: true)
+        eval(Suit.hearts == Suit.diamonds, result: false)
+        eval(Suit.diamonds != Suit.Case(.diamonds), result: false)
+        eval(Suit.diamonds != Suit.diamonds, result: false)
+        eval(Suit.hearts != Suit.hearts, result: false)
+        eval(Suit.hearts != Suit.diamonds, result: true)
+        let suit = Suit.default()
+        eval(suit, result: .diamonds)
+        eval(suit == suit, result: true)
+        eval(suit != suit, result: false)
+        eval(suit == .diamonds, result: true)
+        eval(suit == .hearts, result: true)
+        eval(suit != .diamonds, result: false)
+        eval(suit != .hearts, result: false)
+        func points(_ suit : Suit) -> INT {
+            return suit.match(.diamonds => 9, .hearts => 10, .spades => 11, .clubs => 12)
+        }
+        eval(points(.diamonds), result: 9)
+        eval(points(.hearts), result: 10)
+        eval(points(.spades), result: 11)
+        eval(points(.clubs), result: 12)
+        func Points(_ suit : Suit) -> INT {
+            return suit.Match(Suit.diamonds => 9, Suit.hearts => 10, Suit.spades => 11, Suit.clubs => 12)
+        }
+        eval(Points(.diamonds), result: 9)
+        eval(Points(.hearts), result: 10)
+        eval(Points(.spades), result: 11)
+        eval(Points(.clubs), result: 12)
+        let suit2 : Suit = Suit.clubs.match()
+        XCTAssertEqual(suit2.sortname, "Suit")
+        eval(suit2, result: .diamonds)
+        eval(Suit.clubs.match(default: Suit.hearts), result: .hearts)
+    }
+
+    func testRecord() {
+        
         
     }
-    
+        
     func testLanguage() {
     }
 

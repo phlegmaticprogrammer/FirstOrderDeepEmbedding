@@ -1,4 +1,8 @@
 import Foundation
+import FirstOrderDeepEmbedding
+
+/// This is a replicated definition of the Record sort, but outside of the FirstOrderDeepEmbedding module.
+/// This shows that custom sorts can be just as powerful as predefined sorts.
 
 fileprivate protocol FIELD {
         
@@ -28,7 +32,7 @@ public final class Field<Value : Sort> : FIELD {
     
 }
 
-open class Record : ASort {
+open class ExternalRecord : ASort {
     
     private static let INIT : String = "init"
     private static let INIT_code : Int = -1
@@ -43,12 +47,12 @@ open class Record : ASort {
             guard fieldname.starts(with: "_") else { continue }
             let name = String(fieldname.dropFirst())
             guard let field = child.value as? FIELD else { continue }
-            precondition(name != Record.INIT)
+            precondition(name != ExternalRecord.INIT)
             fields.append((name: name, field: field))
         }
     }
         
-    open override var sortname : String {
+    public override var sortname : String {
         return String(describing: Self.self)
     }
         
@@ -77,7 +81,7 @@ open class Record : ASort {
                 inhabitants.append(f.field.sort.inhabitant)
             }
         }
-        let c_init = ConstName(sort: sortname, name: Record.INIT, code: Record.INIT_code)
+        let c_init = ConstName(sort: sortname, name: ExternalRecord.INIT, code: ExternalRecord.INIT_code)
         super.set(inhabitant: .App(const: c_init, args: inhabitants))
     }
                 
@@ -100,7 +104,7 @@ open class Record : ASort {
         var consts : [ConstName : Signature] = [:]
         let sortnames = fields.map { f in f.field.sort.sortname }
         let sortname = self.sortname
-        consts[ConstName(sort: sortname, name: Record.INIT, code: Record.INIT_code)] = Signature(args: sortnames, result: sortname)
+        consts[ConstName(sort: sortname, name: ExternalRecord.INIT, code: ExternalRecord.INIT_code)] = Signature(args: sortnames, result: sortname)
         for (code, f) in fields.enumerated() {
             consts[ConstName(sort: sortname, name: f.name, code: code)] = Signature(args: [sortname], result: f.field.sort.sortname)
         }
@@ -119,16 +123,17 @@ open class Record : ASort {
         return true
     }
     
-    public static func ==(left : Record, right : Record) -> BOOL {
+    public static func ==(left : ExternalRecord, right : ExternalRecord) -> BOOL {
         return BOOL.equals(left, right)
     }
         
-    public static func != (left : Record, right : Record) -> BOOL {
+    public static func != (left : ExternalRecord, right : ExternalRecord) -> BOOL {
         return !BOOL.equals(left, right)
     }
 
+        
     public override func eval(name : ConstName, count : Int, nativeArgs : (Int) -> Any) -> Any {
-        if name.code == Record.INIT_code {
+        if name.code == ExternalRecord.INIT_code {
             return unpack(count: count, args: nativeArgs)
         } else {
             return (nativeArgs(0) as! Native)[name.code]
@@ -136,3 +141,4 @@ open class Record : ASort {
     }
     
 }
+

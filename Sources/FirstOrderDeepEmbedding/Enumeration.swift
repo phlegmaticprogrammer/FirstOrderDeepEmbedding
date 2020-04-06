@@ -5,9 +5,9 @@ open class Enumeration<EnumBase : CaseIterable & Hashable> : ASort {
     public typealias Native = EnumBase
     
     public static func Case(_ base : EnumBase) -> Self {
-        let e : Enumeration<EnumBase> = Self.init()
+        let e = Self.init()
         e.set(inhabitant: .Native(value: base, sort: e.sortname))
-        return e as! Self
+        return e
     }
     
     public required init() {
@@ -20,8 +20,8 @@ open class Enumeration<EnumBase : CaseIterable & Hashable> : ASort {
         return nativeValue is Native
     }
     
-    public override var sortname : String {
-        return String(describing: Self.self)
+    open override var sortname : String {
+        return String(describing: type(of: self))
     }
     
     public override func setDefaultInhabitant() {
@@ -40,7 +40,19 @@ open class Enumeration<EnumBase : CaseIterable & Hashable> : ASort {
     public static func ==(left : EnumBase, right : Enumeration) -> BOOL {
         return BOOL.equals(Case(left), right)
     }
+
+    public static func !=(left : Enumeration, right : Enumeration) -> BOOL {
+        return !BOOL.equals(left, right)
+    }
     
+    public static func !=(left : Enumeration, right : EnumBase) -> BOOL {
+        return !BOOL.equals(left, Case(right))
+    }
+        
+    public static func !=(left : EnumBase, right : Enumeration) -> BOOL {
+        return !BOOL.equals(Case(left), right)
+    }
+
     public override func eval(name: ConstName, count: Int, nativeArgs: (Int) -> Any) -> Any {
         fatalEval(name, count, nativeArgs)
     }
@@ -77,5 +89,4 @@ open class Enumeration<EnumBase : CaseIterable & Hashable> : ASort {
         return t
     }
 
-    
 }

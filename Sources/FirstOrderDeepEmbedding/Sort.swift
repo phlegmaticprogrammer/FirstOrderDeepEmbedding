@@ -4,7 +4,7 @@ func abstractMethod(_ name : String) -> Never {
     fatalError("cannot call abstract method '\(name)'")
 }
 
-func unpack<T>(count : Int, args : (Int) -> T) -> [T] {
+public func unpack<T>(count : Int, args : (Int) -> T) -> [T] {
     return (0 ..< count).map { index in args(index) }
 }
 
@@ -21,18 +21,18 @@ open class Sort {
         set(inhabitant: inhabitant)
     }
             
-    public func set(inhabitant : Term) {
+    open func set(inhabitant : Term) {
         guard _inhabitant == nil else {
             fatalError("cannot inhabit \(sortname), it is already inhabited")
         }
         _inhabitant = inhabitant
     }
     
-    public func setDefaultInhabitant() {
+    open func setDefaultInhabitant() {
         fatalError("there is no default inhabitant for \(sortname)")
     }
             
-    public var sortname : SortName {
+    open var sortname : SortName {
         abstractMethod("Sort.sortname")
     }
 
@@ -44,15 +44,15 @@ open class Sort {
         return _inhabitant!
     }
         
-    public var constants : [ConstName : Signature] {
+    open var constants : [ConstName : Signature] {
         abstractMethod("Sort.constants")
     }
     
-    public func isValid(nativeValue: Any) -> Bool {
+    open func isValid(nativeValue: Any) -> Bool {
         abstractMethod("Sort.isValid")
     }
         
-    public func eval(name : ConstName, count : Int, nativeArgs : (Int) -> Any) -> Any {
+    open func eval(name : ConstName, count : Int, nativeArgs : (Int) -> Any) -> Any {
         fatalEval(name, count, nativeArgs)
     }
 
