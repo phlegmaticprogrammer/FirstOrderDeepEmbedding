@@ -52,7 +52,6 @@ public final class BOOL : ASort, ExpressibleByBooleanLiteral {
         super.init()
         set(inhabitant: boolean ? BOOL.h.T_true : BOOL.h.T_false)
     }
-
     
     public override func setDefaultInhabitant() {
         set(inhabitant: BOOL.h.T_false)
@@ -89,6 +88,10 @@ public final class BOOL : ASort, ExpressibleByBooleanLiteral {
         
     public static func ==(left : BOOL, right : BOOL) -> BOOL {
         return equals(left, right)
+    }
+
+    public static func !=(left : BOOL, right : BOOL) -> BOOL {
+        return !equals(left, right)
     }
     
     public prefix static func !(operand : BOOL) -> BOOL {

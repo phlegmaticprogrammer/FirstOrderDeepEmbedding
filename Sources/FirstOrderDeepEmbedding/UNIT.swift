@@ -44,4 +44,6 @@ public final class UNIT : ASort {
     
     public static let unit = UNIT(inhabitant: UNIT.h.T_unit)
     
+    public static let singleton = Native()
+    
 }

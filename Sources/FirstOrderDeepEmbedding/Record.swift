@@ -123,6 +123,11 @@ open class Record : ASort {
         return BOOL.equals(left, right)
     }
         
+    public static func != (left : Record, right : Record) -> BOOL {
+        return !BOOL.equals(left, right)
+    }
+
+        
     public override func eval(name : ConstName, count : Int, nativeArgs : (Int) -> Any) -> Any {
         if name.code == Record.INIT_code {
             return unpack(count: count, args: nativeArgs)

@@ -20,13 +20,7 @@ open class Sort {
         self.init()
         set(inhabitant: inhabitant)
     }
-
-    convenience init?<Native : Hashable>(nativeValue : Native) {
-        self.init()
-        guard isValid(nativeValue: nativeValue) else { return nil }
-        set(inhabitant: .Native(value: nativeValue, sort: sortname))
-    }
-        
+            
     public func set(inhabitant : Term) {
         guard _inhabitant == nil else {
             fatalError("cannot inhabit \(sortname), it is already inhabited")
@@ -106,6 +100,22 @@ open class SortMakingHelper {
 public protocol HasAssociatedNativeType {
     
     associatedtype Native : Hashable
+    
+    init()
+    
+    func set(inhabitant : Term)
+    
+    var sortname : SortName { get }
+
+}
+
+public extension HasAssociatedNativeType {
+    
+    static func from(_ native : Native) -> Self {
+        let t = Self()
+        t.set(inhabitant: .Native(value: native, sort: t.sortname))
+        return t
+    }
     
 }
 

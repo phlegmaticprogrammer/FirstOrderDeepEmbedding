@@ -103,6 +103,10 @@ public final class INT : ASort, ExpressibleByIntegerLiteral {
         return BOOL.equals(left, right)
     }
     
+    public static func != (left : INT, right : INT) -> BOOL {
+        return !BOOL.equals(left, right)
+    }
+    
     public prefix static func -(operand : INT) -> INT {
         return INT(inhabitant: .App(const: h.C_uminus, args: [operand.inhabitant]))
     }

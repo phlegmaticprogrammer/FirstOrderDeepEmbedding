@@ -46,6 +46,11 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(X == INT(x), result: true)
         eval(X == INT(y), result: false)
         eval(Y == INT(y), result: true)
+
+        eval(X != INT(x), result: false)
+        eval(X != INT(y), result: true)
+        eval(Y != INT(y), result: false)
+
         
         eval(X < Y, result: x < y)
         eval(X <= Y, result: x <= y)
@@ -60,9 +65,68 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         
         eval(X.inRange(0, 100), result: false)
         eval(Y.inRange(0, 100), result: true)
+                
+        let defaultUNIT : UNIT = X.match()
+        eval(defaultUNIT, result: UNIT.singleton)
+        
+        let defaultBOOL : BOOL = X.match()
+        eval(defaultBOOL, result: false)
+        
+        let defaultINT : INT = X.match()
+        eval(defaultINT, result: 0)
+    }
+    
+    func testUNIT() {
+        eval(UNIT.unit, result: UNIT.singleton)
+        eval(UNIT.from(UNIT.singleton), result: UNIT.singleton)
+    }
+    
+    func testBOOL() {
+        eval(BOOL.from(false), result: false)
+        eval(BOOL.from(true), result: true)
+        eval(BOOL(false), result: false)
+        eval(BOOL(true), result: true)
+        let t : BOOL = true
+        let f : BOOL = false
+        eval(t, result: true)
+        eval(f, result: false)
+        eval(t && t, result: true)
+        eval(t && f, result: false)
+        eval(f && t, result: false)
+        eval(f && f, result: false)
+        eval(t || t, result: true)
+        eval(t || f, result: true)
+        eval(f || t, result: true)
+        eval(f || f, result: false)
+        eval(!t, result: false)
+        eval(!f, result: true)
+        eval(t == t, result: true)
+        eval(t == f, result: false)
+        eval(f == t, result: false)
+        eval(f == f, result: true)
+        eval(t != t, result: false)
+        eval(t != f, result: true)
+        eval(f != t, result: true)
+        eval(f != f, result: false)
+    }
+    
+    func testRecord() {
+        
+    }
+    
+    func testEnumeration() {
+        
+    }
+    
+    func testLanguage() {
     }
 
     static var allTests = [
         ("testINT", testINT),
+        ("testUNIT", testUNIT),
+        ("testBOOL", testBOOL),
+        ("testRecord", testRecord),
+        ("testEnumeration", testEnumeration),
+        ("testLanguage", testLanguage)
     ]
 }
