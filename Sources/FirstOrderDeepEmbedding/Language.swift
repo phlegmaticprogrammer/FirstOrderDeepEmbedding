@@ -31,13 +31,13 @@ public struct Signature : Hashable {
 }
 
 public indirect enum Term : Hashable, CustomStringConvertible {
-    case Custom(name : AnyHashable)
+    case Var(name : AnyHashable)
     case Native(value : AnyHashable, sort : SortName)
     case App(const : ConstName, args : [Term])
     
     public var description : String {
         switch self {
-        case let .Custom(name: name): return "\(name)"
+        case let .Var(name: name): return "\(name)"
         case let .Native(value : value, sort : _): return "{\(value)}"
         case let .App(const, args):
             guard !args.isEmpty else { return const.description }
@@ -102,7 +102,7 @@ public class Language {
         
     public func check(customEnv : (AnyHashable) -> SortName?, term : Term) -> SortName? {
         switch term {
-        case let .Custom(name: name):
+        case let .Var(name: name):
             return customEnv(name)
         case let .Native(value: value, sort: sortname):
             guard let sort = _sorts[sortname] else { return nil }
@@ -135,29 +135,29 @@ public class Language {
         return check(customEnv: {_ in nil}, term: t.inhabitant) == t.sortname
     }
     
-    public func eval(customEnv : (AnyHashable) -> Any?, term : Term) -> Any {
+    public func eval(env : (AnyHashable) -> Any?, term : Term) -> Any {
         switch term {
-        case let .Custom(name: name):
-            return customEnv(name)!
+        case let .Var(name: name):
+            return env(name)!
         case let .Native(value: value, sort: _):
             return value
         case let .App(const: const, args: args):
             let sort = _sorts[const.sort]!
             return sort.eval(name: const, count: args.count) { index in
-                eval(customEnv: customEnv, term: args[index])
+                eval(env: env, term: args[index])
             }
         }
     }
     
     public func eval<T : Sort>(_ t : T) -> Any {
-        return eval(customEnv: {_ in nil }, term: t.inhabitant)
+        return eval(env: {_ in nil }, term: t.inhabitant)
     }
     
     public func customNamesOf(term : Term) -> Set<AnyHashable> {
         var names : Set<AnyHashable> = []
         func collect(_ term : Term) {
             switch term {
-            case let .Custom(name: name): names.insert(name)
+            case let .Var(name: name): names.insert(name)
             case .Native: break
             case let .App(const: _, args: args):
                 for arg in args {
