@@ -106,10 +106,10 @@ public class Language {
         return polymorphicArgs || signature.result != nil
     }
         
-    public func check(customEnv : (AnyHashable) -> SortName?, term : Term) -> SortName? {
+    public func check(env : (AnyHashable) -> SortName?, term : Term) -> SortName? {
         switch term {
         case let .Var(name: name):
-            return customEnv(name)
+            return env(name)
         case let .Native(value: value, sort: sortname):
             guard let sort = _sorts[sortname] else { return nil }
             guard sort.isValid(nativeValue: value) else { return nil }
@@ -119,7 +119,7 @@ public class Language {
             guard args.count == signature.args.count else { return nil }
             var polymorphic : SortName? = nil
             for (i, arg) in args.enumerated() {
-                guard let ty = check(customEnv: customEnv, term: arg) else { return nil }
+                guard let ty = check(env: env, term: arg) else { return nil }
                 if let sigTy = signature.args[i] {
                     if ty != sigTy { return nil }
                 } else if polymorphic == nil {
@@ -138,7 +138,7 @@ public class Language {
     
     public func check<T : Sort>(_ t : T) -> Bool {
         guard t.isInhabited else { return false }
-        let sortname = check(customEnv: {_ in nil}, term: t.inhabitant)
+        let sortname = check(env: {_ in nil}, term: t.inhabitant)
         return sortname == t.sortname
     }
     

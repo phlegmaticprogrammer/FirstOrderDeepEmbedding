@@ -68,6 +68,13 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
             setDefaultInhabitant()
         }
 
+        init(card : Card) {
+            super.init()
+            self.card1 = card
+            setDefaultInhabitant()
+        }
+
+
     }
 
     lazy var language : Language = languageForTesting()
@@ -85,6 +92,11 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
     func eval<T : ASort>(_ t : T, result : T.Native) {
         XCTAssert(language.check(t), "inhabitant = \(t.inhabitant)")
         AssertEqual(language.eval(t) as! T.Native, result, "inhabitant = \(t.inhabitant)")
+    }
+
+    func eval<T : ASort>(typeEnv : (AnyHashable) -> SortName?, env : (AnyHashable) -> AnyHashable?, _ t : T, result : T.Native) {
+        XCTAssertEqual(language.check(env: typeEnv, term: t.inhabitant), T().sortname, "inhabitant = \(t.inhabitant)")
+        AssertEqual(language.eval(env: env, term: t.inhabitant) as! T.Native, result, "inhabitant = \(t.inhabitant)")
     }
     
     func testINT() {
@@ -260,11 +272,26 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         XCTAssert(player4.isValid(nativeValue: native))
         native.append(5)
         XCTAssertFalse(player4.isValid(nativeValue: native))
+        
+        let player5 = Player(card: card2)
+        eval(player5.card1 == card2, result: true)
+        eval(player5.card2 == Card.default(), result: true)
+        eval(player5.stack == 0, result: true)
     }
         
     func testLanguage() {
         let X : INT = 10
         XCTAssertEqual(language.customNamesOf(term: (X + 1).inhabitant), [])
+    
+        let intsortname = INT().sortname
+        func typeEnv(name : AnyHashable) -> SortName? {
+            if name is Int { return intsortname } else { return nil }
+        }
+        func env(name : AnyHashable) -> AnyHashable? {
+            return name as? Int
+        }
+        
+        eval(typeEnv: typeEnv, env: env, INT.Var(5) + INT.Var(7), result: 12)
     }
 
     static var allTests = [

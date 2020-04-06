@@ -65,6 +65,12 @@ open class Sort {
         e.setDefaultInhabitant()
         return e as! Self
     }
+    
+    public static func Var(_ name : AnyHashable) -> Self {
+        let e : Sort = Self()
+        e.set(inhabitant: .Var(name: name))
+        return e as! Self
+    }
 
 }
 
