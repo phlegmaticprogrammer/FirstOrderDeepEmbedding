@@ -32,15 +32,12 @@ public struct Signature : Hashable {
 
 public indirect enum Term : Hashable, CustomStringConvertible {
     case Custom(name : AnyHashable)
-    case Var(index : Int)
     case Native(value : AnyHashable, sort : SortName)
     case App(const : ConstName, args : [Term])
-    case Let(name : String?, rhs : Term, body : Term)
     
     public var description : String {
         switch self {
         case let .Custom(name: name): return "\(name)"
-        case let .Var(index : index): return "Var \(index)"
         case let .Native(value : value, sort : _): return "{\(value)}"
         case let .App(const, args):
             guard !args.isEmpty else { return const.description }
@@ -57,7 +54,6 @@ public indirect enum Term : Hashable, CustomStringConvertible {
             }
             descr.append(")")
             return descr
-        default: fatalError()
         }
     }
 }
@@ -104,13 +100,10 @@ public class Language {
         return polymorphicArgs || signature.result != nil
     }
         
-    public func check(customEnv : (AnyHashable) -> SortName?, env : [SortName], term : Term) -> SortName? {
+    public func check(customEnv : (AnyHashable) -> SortName?, term : Term) -> SortName? {
         switch term {
         case let .Custom(name: name):
             return customEnv(name)
-        case let .Var(index: index):
-            guard index >= 0 && index < env.count else { return nil }
-            return env[env.count - 1 - index]
         case let .Native(value: value, sort: sortname):
             guard let sort = _sorts[sortname] else { return nil }
             guard sort.isValid(nativeValue: value) else { return nil }
@@ -120,7 +113,7 @@ public class Language {
             guard args.count == signature.args.count else { return nil }
             var polymorphic : SortName? = nil
             for (i, arg) in args.enumerated() {
-                guard let ty = check(customEnv: customEnv, env: env, term: arg) else { return nil }
+                guard let ty = check(customEnv: customEnv, term: arg) else { return nil }
                 if let sigTy = signature.args[i] {
                     if ty != sigTy { return nil }
                 } else if polymorphic == nil {
@@ -134,43 +127,30 @@ public class Language {
             } else {
                 return polymorphic
             }
-        case let .Let(name: _, rhs: rhs, body : body):
-            guard let ty = check(customEnv: customEnv, env: env, term: rhs) else { return nil }
-            var newEnv = env
-            newEnv.append(ty)
-            return check(customEnv: customEnv, env: newEnv, term: body)
         }
     }
     
     public func check<T : Sort>(_ t : T) -> Bool {
         guard t.isInhabited else { return false }
-        return check(customEnv: {_ in nil}, env: [], term: t.inhabitant) == t.sortname
+        return check(customEnv: {_ in nil}, term: t.inhabitant) == t.sortname
     }
     
-    public func eval(customEnv : (AnyHashable) -> Any?, env : [Any], term : Term) -> Any {
+    public func eval(customEnv : (AnyHashable) -> Any?, term : Term) -> Any {
         switch term {
         case let .Custom(name: name):
             return customEnv(name)!
-        case let .Var(index: index):
-            precondition(index >= 0 && index < env.count)
-            return env[env.count - 1 - index]
         case let .Native(value: value, sort: _):
             return value
         case let .App(const: const, args: args):
             let sort = _sorts[const.sort]!
             return sort.eval(name: const, count: args.count) { index in
-                eval(customEnv: customEnv, env: env, term: args[index])
+                eval(customEnv: customEnv, term: args[index])
             }
-        case let .Let(name: _, rhs: rhs, body : body):
-            let x = eval(customEnv: customEnv, env: env, term: rhs)
-            var newEnv = env
-            newEnv.append(x)
-            return eval(customEnv: customEnv, env: newEnv, term: body)
         }
     }
     
     public func eval<T : Sort>(_ t : T) -> Any {
-        return eval(customEnv: {_ in nil }, env: [], term: t.inhabitant)
+        return eval(customEnv: {_ in nil }, term: t.inhabitant)
     }
     
     public func customNamesOf(term : Term) -> Set<AnyHashable> {
@@ -178,15 +158,11 @@ public class Language {
         func collect(_ term : Term) {
             switch term {
             case let .Custom(name: name): names.insert(name)
-            case .Var: break
             case .Native: break
             case let .App(const: _, args: args):
                 for arg in args {
                     collect(arg)
                 }
-            case let .Let(name: _, rhs: rhs, body: body):
-                collect(rhs)
-                collect(body)
             }
         }
         collect(term)
