@@ -158,7 +158,7 @@ public final class INT : ASort, ExpressibleByIntegerLiteral {
     public func `in` <S : Sequence>(_ xs : S) -> BOOL where S.Element == INT {
         var result : BOOL = false
         for x in xs {
-            result = result && self == x
+            result = result || self == x
         }
         return result
     }

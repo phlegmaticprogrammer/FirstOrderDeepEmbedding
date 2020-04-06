@@ -2,7 +2,7 @@ import Foundation
 
 public typealias SortName = String
 
-public struct ConstName : Hashable {
+public struct ConstName : Hashable, CustomStringConvertible {
     let sort : SortName
     let name : String?
     let code : Int
@@ -15,6 +15,14 @@ public struct ConstName : Hashable {
     public static func == (left : ConstName, right : ConstName) -> Bool {
         return left.code == right.code && left.sort == right.sort
     }
+    
+    public var description : String {
+        if let n = name {
+            return "\(sort).\(n)"
+        } else {
+            return "\(sort).(code=\(code))"
+        }
+    }
 }
 
 public struct Signature : Hashable {
@@ -22,12 +30,36 @@ public struct Signature : Hashable {
     let result : SortName?
 }
 
-public indirect enum Term : Hashable {
+public indirect enum Term : Hashable, CustomStringConvertible {
     case Custom(name : AnyHashable)
     case Var(index : Int)
     case Native(value : AnyHashable, sort : SortName)
     case App(const : ConstName, args : [Term])
     case Let(name : String?, rhs : Term, body : Term)
+    
+    public var description : String {
+        switch self {
+        case let .Custom(name: name): return "\(name)"
+        case let .Var(index : index): return "Var \(index)"
+        case let .Native(value : value, sort : _): return "{\(value)}"
+        case let .App(const, args):
+            guard !args.isEmpty else { return const.description }
+            var descr = const.description
+            descr.append("(")
+            var first = true
+            for a in args {
+                if first {
+                    first = false
+                } else {
+                    descr.append(",")
+                }
+                descr.append("\(a)")
+            }
+            descr.append(")")
+            return descr
+        default: fatalError()
+        }
+    }
 }
 
 public class Language {
@@ -108,6 +140,11 @@ public class Language {
             newEnv.append(ty)
             return check(customEnv: customEnv, env: newEnv, term: body)
         }
+    }
+    
+    public func check<T : Sort>(_ t : T) -> Bool {
+        guard t.isInhabited else { return false }
+        return check(customEnv: {_ in nil}, env: [], term: t.inhabitant) == t.sortname
     }
     
     public func eval(customEnv : (AnyHashable) -> Any?, env : [Any], term : Term) -> Any {

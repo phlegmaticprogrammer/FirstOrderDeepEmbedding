@@ -6,7 +6,8 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
     let language = Language.standard
 
     func eval<T : ASort>(_ t : T, result : T.Native) {
-        XCTAssertEqual(language.eval(t) as! T.Native, result)
+        XCTAssert(language.check(t))
+        XCTAssertEqual(language.eval(t) as! T.Native, result, "inhabitant = \(t.inhabitant)")
     }
     
     func testINT() {
@@ -32,6 +33,7 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(match(X), result: 1)
         eval(match(Y), result: 2)
         eval(match(X + Y + 1), result: 0)
+        eval((X + Y + 1).match(123 => 1, 27 => 2, default: INT(3)), result: 3)
         
         eval((-X).IfNegative(Y), result: y)
         eval(X.IfNegative(Y), result: x)
@@ -51,6 +53,13 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(X >= Y, result: x >= y)
         eval(X < INT(x), result: false)
         eval(X <= INT(x), result: true)
+        
+        eval(X.in([123, 27]), result: true)
+        eval(Y.in([123, 27]), result: true)
+        eval((X + Y).in([123, 27]), result: false)
+        
+        eval(X.inRange(0, 100), result: false)
+        eval(Y.inRange(0, 100), result: true)
     }
 
     static var allTests = [

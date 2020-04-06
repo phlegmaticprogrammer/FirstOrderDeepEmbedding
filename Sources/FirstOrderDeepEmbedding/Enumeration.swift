@@ -48,7 +48,7 @@ open class Enumeration<EnumBase : CaseIterable & Hashable> : ASort {
     public func In <S : Sequence>(_ xs : S) -> BOOL where S.Element == Self {
         var result : BOOL = false
         for x in xs {
-            result = (result && self == x)
+            result = (result || self == x)
         }
         return result
     }
@@ -56,7 +56,7 @@ open class Enumeration<EnumBase : CaseIterable & Hashable> : ASort {
     public func `in` <S : Sequence>(_ xs : S) -> BOOL where S.Element == EnumBase {
         var result : BOOL = false
         for x in xs {
-            result = (result && self == Self.Case(x))
+            result = (result || self == Self.Case(x))
         }
         return result
     }
