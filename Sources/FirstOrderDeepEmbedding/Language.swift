@@ -142,7 +142,7 @@ public class Language {
         return sortname == t.sortname
     }
     
-    public func eval(env : (AnyHashable) -> Any?, term : Term) -> Any {
+    public func eval(env : (AnyHashable) -> AnyHashable?, term : Term) -> AnyHashable {
         switch term {
         case let .Var(name: name):
             return env(name)!
@@ -156,7 +156,7 @@ public class Language {
         }
     }
     
-    public func eval<T : Sort>(_ t : T) -> Any {
+    public func eval<T : Sort>(_ t : T) -> AnyHashable {
         return eval(env: {_ in nil }, term: t.inhabitant)
     }
     

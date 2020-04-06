@@ -53,7 +53,7 @@ open class Enumeration<EnumBase : CaseIterable & Hashable> : ASort {
         return !BOOL.equals(type(of: right).Case(left), right)
     }
 
-    public override func eval(name: ConstName, count: Int, nativeArgs: (Int) -> Any) -> Any {
+    public override func eval(name: ConstName, count: Int, nativeArgs: (Int) -> AnyHashable) -> AnyHashable {
         fatalEval(name, count, nativeArgs)
     }
 

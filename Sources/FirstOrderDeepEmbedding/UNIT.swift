@@ -38,7 +38,7 @@ public final class UNIT : ASort {
         return UNIT.h.constants
     }
     
-    override public func eval(name : ConstName, count : Int, nativeArgs : (Int) -> Any) -> Any {
+    override public func eval(name : ConstName, count : Int, nativeArgs : (Int) -> AnyHashable) -> AnyHashable {
         return Native()
     }
     

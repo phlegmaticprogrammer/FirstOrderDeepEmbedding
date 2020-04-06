@@ -52,7 +52,7 @@ open class Sort {
         abstractMethod("Sort.isValid")
     }
         
-    open func eval(name : ConstName, count : Int, nativeArgs : (Int) -> Any) -> Any {
+    open func eval(name : ConstName, count : Int, nativeArgs : (Int) -> AnyHashable) -> AnyHashable {
         fatalEval(name, count, nativeArgs)
     }
 

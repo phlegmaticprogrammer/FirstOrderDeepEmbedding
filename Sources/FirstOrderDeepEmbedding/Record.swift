@@ -119,7 +119,7 @@ open class Record : ASort {
         return true
     }
     
-    public static func ==(left : Record, right : Record) -> BOOL {
+    public static func == (left : Record, right : Record) -> BOOL {
         return BOOL.equals(left, right)
     }
         
@@ -127,7 +127,7 @@ open class Record : ASort {
         return !BOOL.equals(left, right)
     }
 
-    public override func eval(name : ConstName, count : Int, nativeArgs : (Int) -> Any) -> Any {
+    public override func eval(name : ConstName, count : Int, nativeArgs : (Int) -> AnyHashable) -> AnyHashable {
         if name.code == Record.INIT_code {
             return unpack(count: count, args: nativeArgs)
         } else {

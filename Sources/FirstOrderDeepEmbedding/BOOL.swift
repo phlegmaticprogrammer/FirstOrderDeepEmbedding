@@ -69,11 +69,11 @@ public final class BOOL : ASort, ExpressibleByBooleanLiteral {
         return BOOL.h.constants
     }
     
-    override public func eval(name : ConstName, count : Int, nativeArgs : (Int) -> Any) -> Any {
+    override public func eval(name : ConstName, count : Int, nativeArgs : (Int) -> AnyHashable) -> AnyHashable {
         switch name.code {
         case BOOL.h.C_false.code: return false
         case BOOL.h.C_true.code: return true
-        case BOOL.h.C_equals.code: return (nativeArgs(0) as! AnyHashable) == (nativeArgs(1) as! AnyHashable)
+        case BOOL.h.C_equals.code: return nativeArgs(0) == nativeArgs(1)
         case BOOL.h.C_not.code: return !(nativeArgs(0) as! Native)
         case BOOL.h.C_and.code: return (nativeArgs(0) as! Native) && (nativeArgs(1) as! Native)
         case BOOL.h.C_or.code: return (nativeArgs(0) as! Native) || (nativeArgs(1) as! Native)

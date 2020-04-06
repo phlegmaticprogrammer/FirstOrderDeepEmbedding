@@ -77,6 +77,7 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         language.add(sort: Rank())
         language.add(sort: Suit())
         language.add(sort: Card())
+        language.add(sort: Player())
         return language
     }
     
@@ -249,8 +250,16 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(player1.card2.rank, result: .king)
         eval(player1.card1 == player2.card1, result: true)
         eval(player1.card1 != player2.card2, result: true)
-
-
+        eval(player1 == player2, result: true)
+        eval(player1 != player3, result: true)
+        eval(player1 != player4, result: true)
+        eval(player1.stack, result: 10000)
+        eval(player3.stack, result: 8)
+        
+        var native = language.eval(player1) as! Record.Native
+        XCTAssert(player4.isValid(nativeValue: native))
+        native.append(5)
+        XCTAssertFalse(player4.isValid(nativeValue: native))
     }
         
     func testLanguage() {

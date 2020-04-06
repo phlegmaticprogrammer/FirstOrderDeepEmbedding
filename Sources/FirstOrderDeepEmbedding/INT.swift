@@ -80,7 +80,7 @@ public final class INT : ASort, ExpressibleByIntegerLiteral {
         return INT.h.constants
     }
         
-    override public func eval(name : ConstName, count : Int, nativeArgs : (Int) -> Any) -> Any {
+    override public func eval(name : ConstName, count : Int, nativeArgs : (Int) -> AnyHashable) -> AnyHashable {
         switch name.code {
         case INT.h.C_uminus.code: return -(nativeArgs(0) as! Native)
         case INT.h.C_plus.code: return (nativeArgs(0) as! Native) + (nativeArgs(1) as! Native)
