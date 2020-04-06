@@ -212,8 +212,6 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
     }
 
     func testRecord() {
-        
-        
     }
         
     func testLanguage() {
