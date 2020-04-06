@@ -82,12 +82,16 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
     }
     
     func testBOOL() {
+        let t : BOOL = true
+        let f : BOOL = false
         eval(BOOL.from(false), result: false)
         eval(BOOL.from(true), result: true)
         eval(BOOL(false), result: false)
         eval(BOOL(true), result: true)
-        let t : BOOL = true
-        let f : BOOL = false
+        let F = false
+        let T = true
+        eval(BOOL(F), result: false)
+        eval(BOOL(T), result: true)
         eval(t, result: true)
         eval(f, result: false)
         eval(t && t, result: true)
