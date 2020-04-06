@@ -77,9 +77,6 @@ open class SortMakingHelper {
     public init(_ sortname : SortName) {
         self.sortname = sortname
         self.constants = [:]
-        let m = Mirror(reflecting: self)
-        print("description of helper = '\(m.description)'")
-        print("Self.type = '\(Self.self)'")
     }
     
     public func add(op : String, args : [SortName?] = [], result : SortName?) -> ConstName {
