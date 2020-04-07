@@ -1,6 +1,6 @@
 name: Ubuntu
 
-on: release
+on: push
 
 jobs:
   build:
