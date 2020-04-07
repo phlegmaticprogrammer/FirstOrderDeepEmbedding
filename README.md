@@ -1,3 +1,3 @@
 # FirstOrderDeepEmbedding
 
-A description of this package.
+Tools for deeply embedding a first-order language in Swift.
