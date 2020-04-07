@@ -2,4 +2,4 @@
 
 
 
-Tools for deeply embedding a first-order language in Swift.
+Tools for deeply embedding a multi-sorted first-order language in Swift.
