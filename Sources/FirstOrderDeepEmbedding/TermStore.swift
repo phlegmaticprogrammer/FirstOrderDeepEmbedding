@@ -1,6 +1,6 @@
 import Foundation
 
-public indirect enum PackedTerm : Hashable {
+public indirect enum StoredTerm : Hashable {
     
     public typealias Id = TermStore.Id
     
@@ -48,29 +48,29 @@ public class TermStore {
         
     }
     
-    private var idOfPackedTerms : [PackedTerm : Id] = [:]
+    private var idOfStoredTerms : [StoredTerm : Id] = [:]
     
-    private var packedTerms : [PackedTerm] = []
+    private var storedTerms : [StoredTerm] = []
     
-    public subscript(id : Id) -> PackedTerm {
-        return packedTerms[id]
+    public subscript(id : Id) -> StoredTerm {
+        return storedTerms[id]
     }
     
-    public subscript(packed : PackedTerm) -> Id {
-        return idOfPackedTerms[packed]!
+    public subscript(stored : StoredTerm) -> Id {
+        return idOfStoredTerms[stored]!
     }
     
     public var count : Int {
-        return packedTerms.count
+        return storedTerms.count
     }
     
-    private func store(_ packed : PackedTerm) -> Id {
-        if let id = idOfPackedTerms[packed] {
+    private func store(_ stored : StoredTerm) -> Id {
+        if let id = idOfStoredTerms[stored] {
             return id
         } else {
-            let id = packedTerms.count
-            packedTerms.append(packed)
-            idOfPackedTerms[packed] = id
+            let id = storedTerms.count
+            storedTerms.append(stored)
+            idOfStoredTerms[stored] = id
             return id
         }
     }
@@ -92,5 +92,11 @@ public class TermStore {
         }
         return compute(id)
     }
+    
+    /*public func pack(term : Term) -> Id {
+        switch term {
+        case .
+        }
+    }*/
     
 }
