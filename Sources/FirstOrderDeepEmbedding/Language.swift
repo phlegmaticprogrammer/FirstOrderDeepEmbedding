@@ -37,15 +37,18 @@ public struct Signature : Hashable {
 }
 
 public indirect enum Term : Hashable, CustomStringConvertible {
-    case Var(name : AnyHashable)
-    case Native(value : AnyHashable, sort : SortName)
-    case App(const : ConstName, args : [Term])
+    
+    public typealias Id = TermStore.MutableId
+    
+    case Var(id : Id = Id(), name : AnyHashable)
+    case Native(id : Id = Id(), value : AnyHashable, sort : SortName)
+    case App(id : Id = Id(), const : ConstName, args : [Term])
     
     public var description : String {
         switch self {
-        case let .Var(name: name): return "\(name)"
-        case let .Native(value : value, sort : sort): return "\(value) : \(sort)"
-        case let .App(const, args):
+        case let .Var(id: _, name: name): return "\(name)"
+        case let .Native(id: _, value : value, sort : sort): return "\(value) : \(sort)"
+        case let .App(id: _, const, args):
             guard !args.isEmpty else { return const.description }
             var descr = const.description
             descr.append("(")
@@ -108,13 +111,13 @@ public class Language {
         
     public func check(env : (AnyHashable) -> SortName?, term : Term) -> SortName? {
         switch term {
-        case let .Var(name: name):
+        case let .Var(id: _, name: name):
             return env(name)
-        case let .Native(value: value, sort: sortname):
+        case let .Native(id: _, value: value, sort: sortname):
             guard let sort = _sorts[sortname] else { return nil }
             guard sort.isValid(nativeValue: value) else { return nil }
             return sortname
-        case let .App(const: const, args: args):
+        case let .App(id: _, const: const, args: args):
             guard let signature = _constants[const] else { return nil }
             guard args.count == signature.args.count else { return nil }
             var polymorphic : SortName? = nil
@@ -144,11 +147,11 @@ public class Language {
     
     public func eval(env : (AnyHashable) -> AnyHashable?, term : Term) -> AnyHashable {
         switch term {
-        case let .Var(name: name):
+        case let .Var(id: _, name: name):
             return env(name)!
-        case let .Native(value: value, sort: _):
+        case let .Native(id: _, value: value, sort: _):
             return value
-        case let .App(const: const, args: args):
+        case let .App(id: _, const: const, args: args):
             let sort = _sorts[const.sort]!
             return sort.eval(name: const, count: args.count) { index in
                 eval(env: env, term: args[index])
@@ -164,9 +167,9 @@ public class Language {
         var names : Set<AnyHashable> = []
         func collect(_ term : Term) {
             switch term {
-            case let .Var(name: name): names.insert(name)
+            case let .Var(id: _, name: name): names.insert(name)
             case .Native: break
-            case let .App(const: _, args: args):
+            case let .App(id: _, const: _, args: args):
                 for arg in args {
                     collect(arg)
                 }
