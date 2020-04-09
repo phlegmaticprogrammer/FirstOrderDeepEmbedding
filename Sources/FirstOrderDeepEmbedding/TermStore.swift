@@ -64,7 +64,7 @@ public class TermStore {
         return storedTerms.count
     }
     
-    private func store(_ stored : StoredTerm) -> Id {
+    private func store(stored : StoredTerm) -> Id {
         if let id = idOfStoredTerms[stored] {
             return id
         } else {
@@ -93,10 +93,15 @@ public class TermStore {
         return compute(id)
     }
     
-    /*public func pack(term : Term) -> Id {
+    public func store(_ term : Term) -> Id {
         switch term {
-        case .
+        case let .App(id: id, const: constname, args: args):
+            return id.set(store(stored: .App(const: constname, args: args.map(store))))
+        case let .Native(id: id, value: value, sort: sortname):
+            return id.set(store(stored: .Native(value: value, sort: sortname)))
+        case let .Var(id: id, name: name):
+            return id.set(store(stored: .Var(name: name)))
         }
-    }*/
+    }
     
 }
