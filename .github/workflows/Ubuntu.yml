@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name Build with Swift 5.1
+    - name: Build with Swift 5.1
       uses: Didstopia/SwiftAction@v1.0.1
       with:
         swift-action: 'build'
