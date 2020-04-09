@@ -1,4 +1,4 @@
-# FirstOrderDeepEmbedding (https://github.com/phlegmaticprogrammer/FirstOrderDeepEmbedding/workflows/Build%20%26%20Test%20with%20Swift%205.1%20via%20Docker/badge.svg) 
+# FirstOrderDeepEmbedding ![](https://github.com/phlegmaticprogrammer/FirstOrderDeepEmbedding/workflows/Build%20%26%20Test%20with%20Swift%205.1%20via%20Docker/badge.svg) 
 
 
 
