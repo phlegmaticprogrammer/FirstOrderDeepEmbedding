@@ -39,20 +39,58 @@ public class TermStore {
         public var isDefined : Bool {
             return _id != nil
         }
-        
-        public var isEmpty : Bool {
-            return _id == nil
-        }
-        
+                
         func set(_ compute : @autoclosure () throws -> Id) rethrows -> Id {
             if _id != nil { return _id! }
             _id = try compute()
             return _id!
         }
+        
     }
     
     private var idOfPackedTerms : [PackedTerm : Id] = [:]
     
     private var packedTerms : [PackedTerm] = []
+    
+    public subscript(id : Id) -> PackedTerm {
+        return packedTerms[id]
+    }
+    
+    public subscript(packed : PackedTerm) -> Id {
+        return idOfPackedTerms[packed]!
+    }
+    
+    public var count : Int {
+        return packedTerms.count
+    }
+    
+    private func store(_ packed : PackedTerm) -> Id {
+        if let id = idOfPackedTerms[packed] {
+            return id
+        } else {
+            let id = packedTerms.count
+            packedTerms.append(packed)
+            idOfPackedTerms[packed] = id
+            return id
+        }
+    }
+    
+    public func size(_ id : Id) -> Int {
+        var computed : Set<Id> = []
+        func compute(_ id : Id) -> Int {
+            if !computed.insert(id).inserted { return 0 }
+            switch self[id] {
+            case .Var: return 1
+            case .Native: return 1
+            case let .App(const: _, args: args):
+                var sum = 1
+                for arg in args {
+                    sum += size(arg)
+                }
+                return sum
+            }
+        }
+        return compute(id)
+    }
     
 }
