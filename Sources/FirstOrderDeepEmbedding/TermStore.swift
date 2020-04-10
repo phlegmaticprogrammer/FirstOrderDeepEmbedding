@@ -16,6 +16,38 @@ public class TermStore {
     
     public typealias Id = Int
     
+    public class Computed<R> {
+        
+        private var computed : [Id : R]
+        
+        public init() {
+            computed = [:]
+        }
+        
+        public subscript(id : Id) -> R? {
+            return computed[id]
+        }
+        
+        public func isComputed(_ id : Id) -> Bool {
+            return self[id] != nil
+        }
+        
+        public func store(id : Id, result : R) {
+            computed[id] = result
+        }
+        
+        public func compute(id : Id, computation : () -> R) -> R {
+            if let r = computed[id] {
+                return r
+            } else {
+                let r = computation()
+                computed[id] = r
+                return r
+            }
+        }
+        
+    }
+    
     public class MutableId : Hashable {
         
         private var _id : Id?
@@ -75,19 +107,21 @@ public class TermStore {
         }
     }
     
-    public func size(_ id : Id) -> Int {
-        var computed : Set<Id> = []
+    public func size(_ id : Id, stored : Bool = true) -> Int {
+        let computed = Computed<Int>()
         func compute(_ id : Id) -> Int {
-            if !computed.insert(id).inserted { return 0 }
-            switch self[id] {
-            case .Var: return 1
-            case .Native: return 1
-            case let .App(const: _, args: args):
-                var sum = 1
-                for arg in args {
-                    sum += size(arg)
+            if stored && computed.isComputed(id) { return 0 }
+            return computed.compute(id: id) {
+                switch self[id] {
+                case .Var: return 1
+                case .Native: return 1
+                case let .App(const: _, args: args):
+                    var sum = 1
+                    for arg in args {
+                        sum += size(arg)
+                    }
+                    return sum
                 }
-                return sum
             }
         }
         return compute(id)

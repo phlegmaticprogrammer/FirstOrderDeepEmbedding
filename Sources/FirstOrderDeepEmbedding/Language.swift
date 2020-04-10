@@ -68,7 +68,7 @@ public indirect enum Term : Hashable, CustomStringConvertible {
 }
 
 public class Language {
-    
+        
     private var _sorts : [SortName : Sort]
     private var _constants : [ConstName : Signature]
         
@@ -135,6 +135,39 @@ public class Language {
                 return sigTy
             } else {
                 return polymorphic
+            }
+        }
+    }
+    
+    public func check(store : TermStore, computed : TermStore.Computed<SortName?> = TermStore.Computed(), env : (AnyHashable) -> SortName?, id : TermStore.Id) -> SortName? {
+        computed.compute(id: id) {
+            switch store[id] {
+            case let .Var(name: name):
+                return env(name)
+            case let .Native(value: value, sort: sortname):
+                guard let sort = _sorts[sortname] else { return nil }
+                guard sort.isValid(nativeValue: value) else { return nil }
+                return sortname
+            case let .App(const: const, args: args):
+                guard let signature = _constants[const] else { return nil }
+                guard args.count == signature.args.count else { return nil }
+                var polymorphic : SortName? = nil
+                for (i, arg) in args.enumerated() {
+                    guard let ty = check(store: store, computed: computed, env: env, id: arg) else { return nil }
+                    if let sigTy = signature.args[i] {
+                        if ty != sigTy { return nil }
+                    } else if polymorphic == nil {
+                        polymorphic = ty
+                    } else if polymorphic! != ty {
+                        return nil
+                    }
+                }
+                if let sigTy = signature.result {
+                    return sigTy
+                } else {
+                    return polymorphic
+                }
+
             }
         }
     }
