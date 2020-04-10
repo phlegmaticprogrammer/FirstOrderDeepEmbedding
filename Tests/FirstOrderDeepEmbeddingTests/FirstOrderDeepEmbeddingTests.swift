@@ -284,7 +284,7 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
             return name as? Int
         }
         
-        eval(typeEnv: typeEnv, env: env, INT.Var(5) + INT.Var(7), result: 12)
+        eval(typeEnv: typeEnv, env: env, INT.Var(5) + INT.Var(7), result: 11)
     }
     
     func testTermStore() {
