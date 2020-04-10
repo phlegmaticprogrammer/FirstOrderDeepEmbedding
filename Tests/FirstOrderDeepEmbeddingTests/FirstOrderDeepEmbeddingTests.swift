@@ -315,7 +315,14 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         }
         
         XCTAssertEqual(store.compute(Eval, id: yId), 1024)
-        
+        guard case let .App(const: _, args: args) = store[yId] else { XCTFail(); return }
+        XCTAssertEqual(args.count, 2)
+        XCTAssertEqual(store.compute(Eval, id: args[0]), 512)
+        XCTAssertEqual(store.compute(Eval, id: args[1]), 512)
+        XCTAssertEqual(store[store[yId]], yId)
+        XCTAssertEqual(store[store[args[0]]], args[0])
+        XCTAssertEqual(store[store[args[1]]], args[1])
+        XCTAssertEqual(args[0], args[1])
     }
 
     static var allTests = [
