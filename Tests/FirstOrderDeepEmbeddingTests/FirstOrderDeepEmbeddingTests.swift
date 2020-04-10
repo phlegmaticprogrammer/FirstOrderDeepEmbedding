@@ -94,7 +94,7 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         AssertEqual(language.eval(t) as! T.Native, result, "inhabitant = \(t.inhabitant)")
     }
 
-    func eval<T : ASort>(typeEnv : (AnyHashable) -> SortName?, env : (AnyHashable) -> AnyHashable?, _ t : T, result : T.Native) {
+    func eval<T : ASort>(typeEnv : @escaping (AnyHashable) -> SortName?, env : (AnyHashable) -> AnyHashable?, _ t : T, result : T.Native) {
         XCTAssertEqual(language.check(env: typeEnv, term: t.inhabitant), T().sortname, "inhabitant = \(t.inhabitant)")
         AssertEqual(language.eval(env: env, term: t.inhabitant) as! T.Native, result, "inhabitant = \(t.inhabitant)")
     }

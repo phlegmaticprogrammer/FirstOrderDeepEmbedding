@@ -65,12 +65,58 @@ public indirect enum Term : Hashable, CustomStringConvertible {
             return descr
         }
     }
+
 }
 
 public class Language {
         
     private var _sorts : [SortName : Sort]
     private var _constants : [ConstName : Signature]
+    
+    public class SortOf : ComputationOnTerms {
+        
+        public typealias Result = SortName?
+        
+        private let language : Language
+        private let environment : (AnyHashable) -> SortName?
+        
+        public init(language : Language, environment : @escaping (AnyHashable) -> SortName?) {
+            self.language = language
+            self.environment = environment
+        }
+        
+        public func computeVar(name: AnyHashable) -> SortName? {
+            return environment(name)
+        }
+        
+        public func computeNative(value: AnyHashable, sort sortname: SortName) -> SortName? {
+            guard let sort = language._sorts[sortname] else { return nil }
+            guard sort.isValid(nativeValue: value) else { return nil }
+            return sortname
+        }
+        
+        public func computeApp(const: ConstName, count: Int, args: (Int) -> SortName?) -> SortName? {
+            guard let signature = language._constants[const] else { return nil }
+            guard count == signature.args.count else { return nil }
+            var polymorphic : SortName? = nil
+            for i in 0 ..< count {
+                guard let ty = args(i) else { return nil }
+                if let sigTy = signature.args[i] {
+                    if ty != sigTy { return nil }
+                } else if polymorphic == nil {
+                    polymorphic = ty
+                } else if polymorphic! != ty {
+                    return nil
+                }
+            }
+            if let sigTy = signature.result {
+                return sigTy
+            } else {
+                return polymorphic
+            }
+        }
+        
+    }
         
     public init() {
         self._sorts = [:]
@@ -109,69 +155,11 @@ public class Language {
         return polymorphicArgs || signature.result != nil
     }
         
-    public func check(env : (AnyHashable) -> SortName?, term : Term) -> SortName? {
-        switch term {
-        case let .Var(id: _, name: name):
-            return env(name)
-        case let .Native(id: _, value: value, sort: sortname):
-            guard let sort = _sorts[sortname] else { return nil }
-            guard sort.isValid(nativeValue: value) else { return nil }
-            return sortname
-        case let .App(id: _, const: const, args: args):
-            guard let signature = _constants[const] else { return nil }
-            guard args.count == signature.args.count else { return nil }
-            var polymorphic : SortName? = nil
-            for (i, arg) in args.enumerated() {
-                guard let ty = check(env: env, term: arg) else { return nil }
-                if let sigTy = signature.args[i] {
-                    if ty != sigTy { return nil }
-                } else if polymorphic == nil {
-                    polymorphic = ty
-                } else if polymorphic! != ty {
-                    return nil
-                }
-            }
-            if let sigTy = signature.result {
-                return sigTy
-            } else {
-                return polymorphic
-            }
-        }
+    public func check(env : @escaping (AnyHashable) -> SortName?, term : Term) -> SortName? {
+        let sortOf = SortOf(language: self, environment: env)
+        return term.compute(sortOf)
     }
-    
-    public func check(store : TermStore, computed : TermStore.Computed<SortName?> = TermStore.Computed(), env : (AnyHashable) -> SortName?, id : TermStore.Id) -> SortName? {
-        computed.compute(id: id) {
-            switch store[id] {
-            case let .Var(name: name):
-                return env(name)
-            case let .Native(value: value, sort: sortname):
-                guard let sort = _sorts[sortname] else { return nil }
-                guard sort.isValid(nativeValue: value) else { return nil }
-                return sortname
-            case let .App(const: const, args: args):
-                guard let signature = _constants[const] else { return nil }
-                guard args.count == signature.args.count else { return nil }
-                var polymorphic : SortName? = nil
-                for (i, arg) in args.enumerated() {
-                    guard let ty = check(store: store, computed: computed, env: env, id: arg) else { return nil }
-                    if let sigTy = signature.args[i] {
-                        if ty != sigTy { return nil }
-                    } else if polymorphic == nil {
-                        polymorphic = ty
-                    } else if polymorphic! != ty {
-                        return nil
-                    }
-                }
-                if let sigTy = signature.result {
-                    return sigTy
-                } else {
-                    return polymorphic
-                }
-
-            }
-        }
-    }
-    
+        
     public func check<T : Sort>(_ t : T) -> Bool {
         guard t.isInhabited else { return false }
         let sortname = check(env: {_ in nil}, term: t.inhabitant)
