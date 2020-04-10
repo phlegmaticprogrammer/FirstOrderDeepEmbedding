@@ -14,38 +14,6 @@ public class TermStore {
     
     public typealias Id = Int
     
-    public class Computed<R> {
-        
-        private var computed : [Id : R]
-        
-        public init() {
-            computed = [:]
-        }
-        
-        public subscript(id : Id) -> R? {
-            return computed[id]
-        }
-        
-        public func isComputed(_ id : Id) -> Bool {
-            return self[id] != nil
-        }
-        
-        public func store(id : Id, result : R) {
-            computed[id] = result
-        }
-        
-        public func compute(id : Id, computation : () -> R) -> R {
-            if let r = computed[id] {
-                return r
-            } else {
-                let r = computation()
-                computed[id] = r
-                return r
-            }
-        }
-        
-    }
-    
     public class MutableId : Hashable {
         
         private var _id : Id?
@@ -71,7 +39,9 @@ public class TermStore {
         }
                 
         func set(_ compute : @autoclosure () throws -> Id) rethrows -> Id {
-            if _id != nil { return _id! }
+            if _id != nil {
+                return _id!
+            }
             _id = try compute()
             return _id!
         }
@@ -81,6 +51,8 @@ public class TermStore {
     private var idOfStoredTerms : [StoredTerm : Id] = [:]
     
     private var storedTerms : [StoredTerm] = []
+    
+    public init() {}
     
     public subscript(id : Id) -> StoredTerm {
         return storedTerms[id]
@@ -105,21 +77,43 @@ public class TermStore {
         }
     }
     
-    public func size(_ id : Id, stored : Bool = true) -> Int {
-        let computed = Computed<Int>()
+    private class Size : ComputationOnTerms {
+        
+        typealias Result = Int
+
+        func computeVar(name: AnyHashable) -> Int {
+            return 1
+        }
+        
+        func computeNative(value: AnyHashable, sort: SortName) -> Int {
+            return 1
+        }
+        
+        func computeApp(const: ConstName, count: Int, args: (Int) -> Int) -> Int {
+            var sum = 1
+            for i in 0 ..< count { sum += args(i) }
+            return sum
+        }
+        
+    }
+    
+    public func size(_ id : Id) -> Int {
+        return self.compute(Size(), id: id)
+    }
+    
+    public func storedSize(_ id : Id) -> Int {
+        var computed : Set<Id> = []
         func compute(_ id : Id) -> Int {
-            if stored && computed.isComputed(id) { return 0 }
-            return computed.compute(id: id) {
-                switch self[id] {
-                case .Var: return 1
-                case .Native: return 1
-                case let .App(const: _, args: args):
-                    var sum = 1
-                    for arg in args {
-                        sum += size(arg)
-                    }
-                    return sum
+            guard computed.insert(id).inserted else { return 0 }
+            switch self[id] {
+            case .Var: return 1
+            case .Native: return 1
+            case let .App(const: _, args: args):
+                var sum = 1
+                for arg in args {
+                    sum += compute(arg)
                 }
+                return sum
             }
         }
         return compute(id)

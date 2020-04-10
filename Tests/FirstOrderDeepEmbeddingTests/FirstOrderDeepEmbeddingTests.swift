@@ -286,6 +286,37 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         
         eval(typeEnv: typeEnv, env: env, INT.Var(5) + INT.Var(7), result: 12)
     }
+    
+    func testTermStore() {
+        
+        // computes x*2^power
+        func add(_ x : INT, power : Int) -> INT {
+            guard power > 0 else { return x }
+            let y = add(x, power: power - 1)
+            return y + y
+        }
+        
+        let x : INT = 1
+        let y = add(x, power: 10)
+        eval(y, result: 1024)
+        
+        let store = TermStore()
+        let yId = store.store(y.inhabitant)
+        XCTAssertEqual(store.size(yId), 2047)
+        XCTAssertEqual(store.storedSize(yId), 11)
+        
+        let Eval = Language.Eval(language: language, environment: { _ in nil })
+        let values = store.computeAll(Eval)
+        XCTAssertEqual(values.count, 11)
+        var v = 1
+        for value in values {
+            XCTAssertEqual(value, v)
+            v = 2 * v
+        }
+        
+        XCTAssertEqual(store.compute(Eval, id: yId), 1024)
+        
+    }
 
     static var allTests = [
         ("testINT", testINT),
@@ -293,6 +324,7 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         ("testBOOL", testBOOL),
         ("testRecord", testRecord),
         ("testEnumeration", testEnumeration),
-        ("testLanguage", testLanguage)
+        ("testLanguage", testLanguage),
+        ("testTermStore", testTermStore)
     ]
 }
