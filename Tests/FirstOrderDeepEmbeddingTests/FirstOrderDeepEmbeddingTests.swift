@@ -325,13 +325,4 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         XCTAssertEqual(args[0], args[1])
     }
 
-    static var allTests = [
-        ("testINT", testINT),
-        ("testUNIT", testUNIT),
-        ("testBOOL", testBOOL),
-        ("testRecord", testRecord),
-        ("testEnumeration", testEnumeration),
-        ("testLanguage", testLanguage),
-        ("testTermStore", testTermStore)
-    ]
 }
