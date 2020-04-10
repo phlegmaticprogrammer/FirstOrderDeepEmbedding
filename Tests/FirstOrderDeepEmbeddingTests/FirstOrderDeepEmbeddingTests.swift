@@ -1,13 +1,6 @@
 import XCTest
 import FirstOrderDeepEmbedding
 
-func AssertEqual<T : Equatable>(_ a : @autoclosure () -> T, _ b : @autoclosure() -> T, _ message : String = "") {
-    XCTAssertEqual(a(), b(), message)
-    /*if a() != b() {
-        fatalError()
-    }*/
-}
-
 final class FirstOrderDeepEmbeddingTests: XCTestCase {
     
     class Suit : Enumeration<Suit.Base> {
@@ -91,12 +84,12 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
 
     func eval<T : ASort>(_ t : T, result : T.Native) {
         XCTAssert(language.check(t), "inhabitant = \(t.inhabitant)")
-        AssertEqual(language.eval(t) as! T.Native, result, "inhabitant = \(t.inhabitant)")
+        XCTAssertEqual(language.eval(t) as! T.Native, result, "inhabitant = \(t.inhabitant)")
     }
 
     func eval<T : ASort>(typeEnv : @escaping (AnyHashable) -> SortName?, env : @escaping (AnyHashable) -> AnyHashable?, _ t : T, result : T.Native) {
         XCTAssertEqual(language.check(env: typeEnv, term: t.inhabitant), T().sortname, "inhabitant = \(t.inhabitant)")
-        AssertEqual(language.eval(env: env, term: t.inhabitant) as! T.Native, result, "inhabitant = \(t.inhabitant)")
+        XCTAssertEqual(language.eval(env: env, term: t.inhabitant) as! T.Native, result, "inhabitant = \(t.inhabitant)")
     }
     
     func testINT() {
