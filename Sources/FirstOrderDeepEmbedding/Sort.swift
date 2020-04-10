@@ -1,5 +1,3 @@
-import Foundation
-
 func abstractMethod(_ name : String) -> Never {
     fatalError("cannot call abstract method '\(name)'")
 }

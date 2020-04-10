@@ -1,5 +1,3 @@
-import Foundation
-
 public indirect enum StoredTerm : Hashable {
     
     public typealias Id = TermStore.Id

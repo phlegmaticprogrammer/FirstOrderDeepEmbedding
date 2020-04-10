@@ -1,5 +1,3 @@
-import Foundation
-
 fileprivate protocol FIELD {
         
     var sort : Sort { get }

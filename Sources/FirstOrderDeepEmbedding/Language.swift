@@ -1,5 +1,3 @@
-import Foundation
-
 public typealias SortName = String
 
 public struct ConstName : Hashable, CustomStringConvertible {

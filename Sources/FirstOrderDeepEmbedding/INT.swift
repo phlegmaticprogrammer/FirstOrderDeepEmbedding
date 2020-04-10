@@ -1,5 +1,3 @@
-import Foundation
-
 public final class INT : ASort, ExpressibleByIntegerLiteral {
     
     public typealias IntegerLiteralType = Int

@@ -1,5 +1,3 @@
-import Foundation
-
 public final class BOOL : ASort, ExpressibleByBooleanLiteral {
     
     public typealias BooleanLiteralType = Bool

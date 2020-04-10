@@ -1,5 +1,3 @@
-import Foundation
-
 public final class UNIT : ASort {
     
     private class H : SortMakingHelper {

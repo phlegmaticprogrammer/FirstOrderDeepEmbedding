@@ -1,5 +1,3 @@
-import Foundation
-
 open class Enumeration<EnumBase : CaseIterable & Hashable> : ASort {
         
     public typealias Native = EnumBase

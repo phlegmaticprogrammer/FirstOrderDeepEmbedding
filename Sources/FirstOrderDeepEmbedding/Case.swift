@@ -1,5 +1,3 @@
-import Foundation
-
 infix operator => : AssignmentPrecedence
 
 public struct Case<Pattern, Result> {
