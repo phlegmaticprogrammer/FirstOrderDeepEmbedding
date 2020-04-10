@@ -73,14 +73,16 @@ public class Language {
     private var _sorts : [SortName : Sort]
     private var _constants : [ConstName : Signature]
     
+    public typealias Environment<R> = (AnyHashable) -> R?
+    
     public class SortOf : ComputationOnTerms {
         
         public typealias Result = SortName?
         
         private let language : Language
-        private let environment : (AnyHashable) -> SortName?
+        private let environment : Environment<SortName>
         
-        public init(language : Language, environment : @escaping (AnyHashable) -> SortName?) {
+        public init(language : Language, environment : @escaping Environment<SortName>) {
             self.language = language
             self.environment = environment
         }
@@ -116,6 +118,33 @@ public class Language {
             }
         }
         
+    }
+    
+    public class Eval : ComputationOnTerms {
+        
+        public typealias Result = AnyHashable
+        
+        private let language : Language
+        private let environment : Environment<AnyHashable>
+        
+        public init(language : Language, environment : @escaping Environment<AnyHashable>) {
+            self.language = language
+            self.environment = environment
+        }
+        
+        public func computeVar(name: AnyHashable) -> AnyHashable {
+            return environment(name)!
+        }
+        
+        public func computeNative(value: AnyHashable, sort: SortName) -> AnyHashable {
+            return value
+        }
+        
+        public func computeApp(const: ConstName, count: Int, args: (Int) -> AnyHashable) -> AnyHashable {
+            let sort = language._sorts[const.sort]!
+            return sort.eval(name: const, count: count, nativeArgs: args)
+        }
+
     }
         
     public init() {
@@ -155,7 +184,7 @@ public class Language {
         return polymorphicArgs || signature.result != nil
     }
         
-    public func check(env : @escaping (AnyHashable) -> SortName?, term : Term) -> SortName? {
+    public func check(env : @escaping Environment<SortName>, term : Term) -> SortName? {
         let sortOf = SortOf(language: self, environment: env)
         return term.compute(sortOf)
     }
@@ -166,18 +195,8 @@ public class Language {
         return sortname == t.sortname
     }
     
-    public func eval(env : (AnyHashable) -> AnyHashable?, term : Term) -> AnyHashable {
-        switch term {
-        case let .Var(id: _, name: name):
-            return env(name)!
-        case let .Native(id: _, value: value, sort: _):
-            return value
-        case let .App(id: _, const: const, args: args):
-            let sort = _sorts[const.sort]!
-            return sort.eval(name: const, count: args.count) { index in
-                eval(env: env, term: args[index])
-            }
-        }
+    public func eval(env : @escaping Environment<AnyHashable>, term : Term) -> AnyHashable {
+        return term.compute(Eval(language: self, environment: env))
     }
     
     public func eval<T : Sort>(_ t : T) -> AnyHashable {
