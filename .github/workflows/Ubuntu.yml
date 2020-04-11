@@ -14,7 +14,7 @@ jobs:
     - name: Test Package
       run: docker run --rm --mount type=bind,src=$GITHUB_WORKSPACE,dst=/github_workspace -w /github_workspace swift:5.1 swift test -v --enable-test-discovery --enable-code-coverage
     - name: Prepare Code Coverage
-      run: llvm-cov export -format="lcov" .build/x86_64-unknown-linux-gnu/debug/${{ secrets.PACKAGE }}PackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
+      run: docker run --rm --mount type=bind,src=$GITHUB_WORKSPACE,dst=/github_workspace -w /github_workspace swift:5.1 llvm-cov export -format="lcov" .build/x86_64-unknown-linux-gnu/debug/${{ secrets.PACKAGE }}PackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
     - name: Upload to CodeConv.io
       run: bash <(curl https://codecov.io/bash)
       env:
