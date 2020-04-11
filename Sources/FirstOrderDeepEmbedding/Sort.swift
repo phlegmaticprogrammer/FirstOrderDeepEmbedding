@@ -83,10 +83,18 @@ open class SortMakingHelper {
         self.constants = [:]
     }
     
+    private func T(_ sortname : SortName?) -> Signature.T {
+        if let name = sortname {
+            return .monomorph(name: name)
+        } else {
+            return .polymorph
+        }
+    }
+    
     public func add(op : String, args : [SortName?] = [], result : SortName?) -> ConstName {
         let constname = ConstName(sort: sortname, name: op, code: constants.count)
         precondition(constants[constname] == nil)
-        let signature = Signature(args: args, result: result)
+        let signature = Signature(args: args.map(T), result: T(result))
         constants[constname] = signature
         return constname
     }

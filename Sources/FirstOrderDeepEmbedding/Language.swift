@@ -25,12 +25,26 @@ public struct ConstName : Hashable, CustomStringConvertible {
     }
 }
 
+public typealias VarName = AnyHashable
+
 public struct Signature : Hashable {
-    public let args : [SortName?]
-    public let result : SortName?
-    public init(args : [SortName?], result : SortName?) {
+    
+    public enum T : Hashable {
+        case monomorph(name : SortName)
+        case polymorph
+    }
+    
+    public let args : [T]
+    public let result : T
+    
+    public init(args : [T], result : T) {
         self.args = args
         self.result = result
+    }
+    
+    public init(args : [SortName], result : SortName) {
+        self.args = args.map { arg in T.monomorph(name: arg) }
+        self.result = .monomorph(name: result)
     }
 }
 
@@ -38,7 +52,7 @@ public indirect enum Term : Hashable, CustomStringConvertible {
     
     public typealias Id = TermStore.MutableId
     
-    case Var(id : Id = Id(), name : AnyHashable)
+    case Var(id : Id = Id(), name : VarName)
     case Native(id : Id = Id(), value : AnyHashable, sort : SortName)
     case App(id : Id = Id(), const : ConstName, args : [Term])
     
@@ -71,7 +85,7 @@ public class Language {
     private var _sorts : [SortName : Sort]
     private var _constants : [ConstName : Signature]
     
-    public typealias Environment<R> = (AnyHashable) -> R?
+    public typealias Environment<R> = (VarName) -> R?
     
     public class SortOf : ComputationOnTerms {
         
@@ -85,7 +99,7 @@ public class Language {
             self.environment = environment
         }
         
-        public func computeVar(name: AnyHashable) -> SortName? {
+        public func computeVar(name: VarName) -> SortName? {
             return environment(name)
         }
         
@@ -101,17 +115,21 @@ public class Language {
             var polymorphic : SortName? = nil
             for i in 0 ..< count {
                 guard let ty = args(i) else { return nil }
-                if let sigTy = signature.args[i] {
+                switch signature.args[i] {
+                case let .monomorph(name: sigTy):
                     if ty != sigTy { return nil }
-                } else if polymorphic == nil {
-                    polymorphic = ty
-                } else if polymorphic! != ty {
-                    return nil
+                case .polymorph:
+                    if polymorphic == nil {
+                        polymorphic = ty
+                    } else if polymorphic! != ty {
+                        return nil
+                    }
                 }
             }
-            if let sigTy = signature.result {
+            switch signature.result {
+            case let .monomorph(name: sigTy):
                 return sigTy
-            } else {
+            case .polymorph:
                 return polymorphic
             }
         }
@@ -130,7 +148,7 @@ public class Language {
             self.environment = environment
         }
         
-        public func computeVar(name: AnyHashable) -> AnyHashable {
+        public func computeVar(name: VarName) -> AnyHashable {
             return environment(name)!
         }
         
@@ -172,14 +190,21 @@ public class Language {
         return _sorts[sort] != nil
     }
     
-    public func isValid(signature : Signature) -> Bool {
-        guard signature.result == nil || isValid(sort: signature.result!) else { return false }
-        var polymorphicArgs = false
-        for sort in signature.args {
-            if sort == nil { polymorphicArgs = true }
-            guard sort == nil || isValid(sort: sort!) else { return false }
+    private func isValid(_ t : Signature.T) -> Bool {
+        switch t {
+        case .polymorph: return true
+        case let .monomorph(name: name): return isValid(sort: name)
         }
-        return polymorphicArgs || signature.result != nil
+    }
+    
+    public func isValid(signature : Signature) -> Bool {
+        guard isValid(signature.result) else { return false }
+        var polymorphicArgs = false
+        for arg in signature.args {
+            if arg == .polymorph { polymorphicArgs = true }
+            guard isValid(arg) else { return false }
+        }
+        return polymorphicArgs || signature.result != .polymorph
     }
         
     public func check(env : @escaping Environment<SortName>, term : Term) -> SortName? {

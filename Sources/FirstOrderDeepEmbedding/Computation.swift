@@ -2,7 +2,7 @@ public protocol ComputationOnTerms {
 
     associatedtype Result
 
-    func computeVar(name : AnyHashable) -> Result
+    func computeVar(name : VarName) -> Result
     
     func computeNative(value : AnyHashable, sort : SortName) -> Result
     

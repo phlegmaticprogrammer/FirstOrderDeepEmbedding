@@ -2,7 +2,7 @@ public indirect enum StoredTerm : Hashable {
     
     public typealias Id = TermStore.Id
     
-    case Var(name : AnyHashable)
+    case Var(name : VarName)
     
     case Native(value : AnyHashable, sort : SortName)
     
@@ -81,7 +81,7 @@ public class TermStore {
         
         typealias Result = Int
 
-        func computeVar(name: AnyHashable) -> Int {
+        func computeVar(name: VarName) -> Int {
             return 1
         }
         
