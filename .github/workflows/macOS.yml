@@ -1,6 +1,8 @@
 name: macOS 
 
-on: release
+on:
+  release:
+    types: [published]
 
 jobs:
   build:
