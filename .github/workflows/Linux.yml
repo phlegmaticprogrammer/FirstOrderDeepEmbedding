@@ -1,4 +1,4 @@
-name: Building & Testing with Swift 5.1 via Docker
+name: Linux
 
 on: push
 

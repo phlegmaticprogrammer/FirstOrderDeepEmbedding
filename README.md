@@ -1,5 +1,7 @@
-# FirstOrderDeepEmbedding ![](https://github.com/phlegmaticprogrammer/FirstOrderDeepEmbedding/workflows/Building%20%26%20Testing%20with%20Swift%205.1%20via%20Docker/badge.svg) 
+# FirstOrderDeepEmbedding 
 
-
+Building and Testing with | on macOS | on Linux
+---------------------------- | :--------: | :-------:
+Swift 5.1                        | ![](https://github.com/phlegmaticprogrammer/FirstOrderDeepEmbedding/workflows/macOS/badge.svg) | ![](https://github.com/phlegmaticprogrammer/FirstOrderDeepEmbedding/workflows/Linux/badge.svg) 
 
 Tools for deeply embedding a multi-sorted first-order language in Swift.
