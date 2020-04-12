@@ -80,89 +80,13 @@ public indirect enum Term : Hashable, CustomStringConvertible {
 
 }
 
+public typealias Environment<R> = (VarName) -> R?
+
 public class Language {
         
     private var _sorts : [SortName : Sort]
     private var _constants : [ConstName : Signature]
-    
-    public typealias Environment<R> = (VarName) -> R?
-    
-    public class SortOf : ComputationOnTerms {
-        
-        public typealias Result = SortName?
-        
-        private let language : Language
-        private let environment : Environment<SortName>
-        
-        public init(language : Language, environment : @escaping Environment<SortName>) {
-            self.language = language
-            self.environment = environment
-        }
-        
-        public func computeVar(name: VarName) -> SortName? {
-            return environment(name)
-        }
-        
-        public func computeNative(value: AnyHashable, sort sortname: SortName) -> SortName? {
-            guard let sort = language._sorts[sortname] else { return nil }
-            guard sort.isValid(nativeValue: value) else { return nil }
-            return sortname
-        }
-        
-        public func computeApp(const: ConstName, count: Int, args: (Int) -> SortName?) -> SortName? {
-            guard let signature = language._constants[const] else { return nil }
-            guard count == signature.args.count else { return nil }
-            var polymorphic : SortName? = nil
-            for i in 0 ..< count {
-                guard let ty = args(i) else { return nil }
-                switch signature.args[i] {
-                case let .monomorph(name: sigTy):
-                    if ty != sigTy { return nil }
-                case .polymorph:
-                    if polymorphic == nil {
-                        polymorphic = ty
-                    } else if polymorphic! != ty {
-                        return nil
-                    }
-                }
-            }
-            switch signature.result {
-            case let .monomorph(name: sigTy):
-                return sigTy
-            case .polymorph:
-                return polymorphic
-            }
-        }
-        
-    }
-    
-    public class Eval : ComputationOnTerms {
-        
-        public typealias Result = AnyHashable
-        
-        private let language : Language
-        private let environment : Environment<AnyHashable>
-        
-        public init(language : Language, environment : @escaping Environment<AnyHashable>) {
-            self.language = language
-            self.environment = environment
-        }
-        
-        public func computeVar(name: VarName) -> AnyHashable {
-            return environment(name)!
-        }
-        
-        public func computeNative(value: AnyHashable, sort: SortName) -> AnyHashable {
-            return value
-        }
-        
-        public func computeApp(const: ConstName, count: Int, args: (Int) -> AnyHashable) -> AnyHashable {
-            let sort = language._sorts[const.sort]!
-            return sort.eval(name: const, count: count, nativeArgs: args)
-        }
-
-    }
-        
+            
     public init() {
         self._sorts = [:]
         self._constants = [:]
@@ -188,6 +112,14 @@ public class Language {
         
     public func isValid(sort : SortName) -> Bool {
         return _sorts[sort] != nil
+    }
+    
+    public func sortOf(_ sort : SortName) -> Sort? {
+        return _sorts[sort]
+    }
+    
+    public func signatureOf(_ constant : ConstName) -> Signature? {
+        return _constants[constant]
     }
     
     private func isValid(_ t : Signature.T) -> Bool {
@@ -226,20 +158,8 @@ public class Language {
         return eval(env: {_ in nil }, term: t.inhabitant)
     }
     
-    public func customNamesOf(term : Term) -> Set<AnyHashable> {
-        var names : Set<AnyHashable> = []
-        func collect(_ term : Term) {
-            switch term {
-            case let .Var(id: _, name: name): names.insert(name)
-            case .Native: break
-            case let .App(id: _, const: _, args: args):
-                for arg in args {
-                    collect(arg)
-                }
-            }
-        }
-        collect(term)
-        return names
+    public func varNamesOf(term : Term) -> Set<VarName> {
+        return term.compute(VarNamesOf())
     }
         
     public static var standard : Language {

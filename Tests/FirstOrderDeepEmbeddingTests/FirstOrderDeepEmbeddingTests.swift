@@ -274,7 +274,7 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         
     func testLanguage() {
         let X : INT = 10
-        XCTAssertEqual(language.customNamesOf(term: (X + 1).inhabitant), [])
+        XCTAssertEqual(language.varNamesOf(term: (X + 1).inhabitant), [])
     
         let intsortname = INT().sortname
         func typeEnv(name : AnyHashable) -> SortName? {
@@ -305,8 +305,8 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         XCTAssertEqual(store.size(yId), 2047)
         XCTAssertEqual(store.storedSize(yId), 11)
         
-        let Eval = Language.Eval(language: language, environment: { _ in nil })
-        let values = store.computeAll(Eval)
+        let E = Eval(language: language, environment: { _ in nil })
+        let values = store.computeAll(E)
         XCTAssertEqual(values.count, 11)
         var v = 1
         for value in values {
@@ -314,11 +314,11 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
             v = 2 * v
         }
         
-        XCTAssertEqual(store.compute(Eval, id: yId), 1024)
+        XCTAssertEqual(store.compute(E, id: yId), 1024)
         guard case let .App(const: _, args: args) = store[yId] else { XCTFail(); return }
         XCTAssertEqual(args.count, 2)
-        XCTAssertEqual(store.compute(Eval, id: args[0]), 512)
-        XCTAssertEqual(store.compute(Eval, id: args[1]), 512)
+        XCTAssertEqual(store.compute(E, id: args[0]), 512)
+        XCTAssertEqual(store.compute(E, id: args[1]), 512)
         XCTAssertEqual(store[store[yId]], yId)
         XCTAssertEqual(store[store[args[0]]], args[0])
         XCTAssertEqual(store[store[args[1]]], args[1])
@@ -326,3 +326,4 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
     }
 
 }
+
