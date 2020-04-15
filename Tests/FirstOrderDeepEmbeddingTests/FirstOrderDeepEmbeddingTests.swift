@@ -312,6 +312,19 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         XCTAssertTrue(lang1 < Language.standard)
         XCTAssertTrue(lang2 < Language.standard)
         XCTAssertTrue(lang3 < Language.standard)
+        
+        XCTAssertTrue(Language.standard < languageForTesting())
+        
+        lang2.add(sort: UNIT())
+        XCTAssertNotEqual(lang2, lang3)
+        
+        let lang4 = Language.join(lang2, lang3)
+        let lang5 = Language.join(lang3, lang2)
+        
+        XCTAssertEqual(lang4, lang5)
+        XCTAssertTrue(lang2 < lang4)
+        XCTAssertTrue(lang3 < lang4)
+
     }
     
     func testTermStore() {
