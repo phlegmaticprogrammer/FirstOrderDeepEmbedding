@@ -83,63 +83,54 @@ public indirect enum Term : Hashable, CustomStringConvertible {
 public typealias Environment<R> = (VarName) -> R?
 
 public struct Language : Hashable, Comparable {
-        
-    private class Id : Hashable {
-        
-        public static func == (left : Id, right : Id) -> Bool {
-            return left === right
-        }
-        
-        public func hash(into hasher: inout Hasher) {
-            hasher.combine(ObjectIdentifier(self))
-        }
-        
-    }
-    
-    private var _history : [Id]
+            
     private var _sorts : [SortName : Sort]
     private var _constants : [ConstName : Signature]
             
+    private init(sorts : [SortName : Sort], constants : [ConstName : Signature]) {
+        _sorts = sorts
+        _constants = constants
+    }
+    
     public init() {
-        self._history = []
         self._sorts = [:]
         self._constants = [:]
     }
+    
+    public var sorts : Set<SortName> {
+        return Set(_sorts.keys)
+    }
         
     public static func < (lhs: Language, rhs: Language) -> Bool {
-        guard lhs._history.count < rhs._history.count else { return false }
-        guard let id = lhs._history.last else { return true }
-        return rhs._history.contains(id)
+        return lhs.sorts.isStrictSubset(of: rhs.sorts)
     }
     
-    public static func join (_ lhs: Language, _ rhs: Language) -> Language? {
-        if lhs == rhs { return lhs }
-        if lhs < rhs { return rhs }
-        if lhs > rhs { return lhs }
-        return nil
+    public static func join (_ lhs: Language, _ rhs: Language) -> Language {
+        let sorts = lhs._sorts.merging(rhs._sorts, uniquingKeysWith: { (s, _) in s })
+        let constants = lhs._constants.merging(rhs._constants, uniquingKeysWith: { (s, _) in s })
+        return Language(sorts: sorts, constants: constants)
     }
 
     public static func == (left : Language, right : Language) -> Bool {
-        return left._history.last == right._history.last    }
+        return left.sorts == right.sorts
+    }
         
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(_history.last)
+        hasher.combine(sorts)
     }
-    
-    private mutating func updateHistory() {
-        _history.append(Id())
-    }
-    
+        
     private mutating func add(name : ConstName, signature : Signature) {
         precondition(_constants[name] == nil)
         guard(isValid(signature: signature)) else {
             fatalError("invalid signature for \(name): \(signature)")
         }
         _constants[name] = signature
-        updateHistory()
     }
 
-    public mutating func add(sort : Sort) {
+    public mutating func add(sort _sort : Sort) {
+        guard let sort = SortRegistry.register(sort: _sort) else {
+            fatalError("cannot add sort '\(_sort.sortname)' to language, a different sort of the same name exists on the system")
+        }
         let name = sort.sortname
         precondition(_sorts[name] == nil)
         _sorts[name] = sort
@@ -147,7 +138,6 @@ public struct Language : Hashable, Comparable {
             precondition(constname.sort == name)
             add(name: constname, signature: signature)
         }
-        updateHistory()
     }
         
     public func isValid(sort : SortName) -> Bool {
