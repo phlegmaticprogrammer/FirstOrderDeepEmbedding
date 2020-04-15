@@ -2,10 +2,6 @@ func abstractMethod(_ name : String) -> Never {
     fatalError("cannot call abstract method '\(name)'")
 }
 
-public func unpack<T>(count : Int, args : (Int) -> T) -> [T] {
-    return (0 ..< count).map { index in args(index) }
-}
-
 open class Sort {
     
     private var _inhabitant : Term?
@@ -68,6 +64,10 @@ open class Sort {
         let e : Sort = Self()
         e.set(inhabitant: .Var(name: name))
         return e as! Self
+    }
+    
+    public static func unpack<T>(count : Int, args : (Int) -> T) -> [T] {
+        return (0 ..< count).map { index in args(index) }
     }
 
 }

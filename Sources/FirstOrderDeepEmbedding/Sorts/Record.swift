@@ -127,7 +127,7 @@ open class Record : ASort {
 
     public override func eval(name : ConstName, count : Int, nativeArgs : (Int) -> AnyHashable) -> AnyHashable {
         if name.code == Record.INIT_code {
-            return unpack(count: count, args: nativeArgs)
+            return Sort.unpack(count: count, args: nativeArgs)
         } else {
             return (nativeArgs(0) as! Native)[name.code]
         }
