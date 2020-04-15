@@ -285,6 +285,12 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         }
         
         eval(typeEnv: typeEnv, env: env, INT.Var(5) + INT.Var(7), result: 12)
+        
+        let lang1 = Language()
+        let lang2 = Language()
+        
+        XCTAssertEqual(lang1, lang1)
+        XCTAssertNotEqual(lang1, lang2)
     }
     
     func testTermStore() {

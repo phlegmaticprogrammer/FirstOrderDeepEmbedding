@@ -82,7 +82,7 @@ public indirect enum Term : Hashable, CustomStringConvertible {
 
 public typealias Environment<R> = (VarName) -> R?
 
-public class Language {
+public class Language : Hashable {
         
     private var _sorts : [SortName : Sort]
     private var _constants : [ConstName : Signature]
@@ -90,6 +90,14 @@ public class Language {
     public init() {
         self._sorts = [:]
         self._constants = [:]
+    }
+    
+    public static func == (left : Language, right : Language) -> Bool {
+        return left === right
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
     
     private func add(name : ConstName, signature : Signature) {
