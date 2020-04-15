@@ -82,33 +82,64 @@ public indirect enum Term : Hashable, CustomStringConvertible {
 
 public typealias Environment<R> = (VarName) -> R?
 
-public class Language : Hashable {
+public struct Language : Hashable, Comparable {
         
+    private class Id : Hashable {
+        
+        public static func == (left : Id, right : Id) -> Bool {
+            return left === right
+        }
+        
+        public func hash(into hasher: inout Hasher) {
+            hasher.combine(ObjectIdentifier(self))
+        }
+        
+    }
+    
+    private var _history : [Id]
     private var _sorts : [SortName : Sort]
     private var _constants : [ConstName : Signature]
             
     public init() {
+        self._history = []
         self._sorts = [:]
         self._constants = [:]
     }
+        
+    public static func < (lhs: Language, rhs: Language) -> Bool {
+        guard lhs._history.count < rhs._history.count else { return false }
+        guard let id = lhs._history.last else { return true }
+        return rhs._history.contains(id)
+    }
     
+    public static func join (_ lhs: Language, _ rhs: Language) -> Language? {
+        if lhs == rhs { return lhs }
+        if lhs < rhs { return rhs }
+        if lhs > rhs { return lhs }
+        return nil
+    }
+
     public static func == (left : Language, right : Language) -> Bool {
-        return left === right
-    }
-    
+        return left._history.last == right._history.last    }
+        
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(ObjectIdentifier(self))
+        hasher.combine(_history.last)
     }
     
-    private func add(name : ConstName, signature : Signature) {
+    private mutating func updateHistory() {
+        _history.append(Id())
+    }
+    
+    private mutating func add(name : ConstName, signature : Signature) {
         precondition(_constants[name] == nil)
         guard(isValid(signature: signature)) else {
             fatalError("invalid signature for \(name): \(signature)")
         }
         _constants[name] = signature
+        updateHistory()
     }
 
-    public func add(sort : Sort) {
+    public mutating func add(sort : Sort) {
         let name = sort.sortname
         precondition(_sorts[name] == nil)
         _sorts[name] = sort
@@ -116,6 +147,7 @@ public class Language : Hashable {
             precondition(constname.sort == name)
             add(name: constname, signature: signature)
         }
+        updateHistory()
     }
         
     public func isValid(sort : SortName) -> Bool {
@@ -169,13 +201,15 @@ public class Language : Hashable {
     public func varNamesOf(term : Term) -> Set<VarName> {
         return term.compute(VarNamesOf())
     }
-        
-    public static var standard : Language {
-        let language = Language()
+    
+    private static func computeStandard() -> Language {
+        var language = Language()
         language.add(sort: UNIT())
         language.add(sort: BOOL())
         language.add(sort: INT())
         return language
     }
+        
+    public static let standard : Language = computeStandard()
         
 }

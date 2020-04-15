@@ -73,7 +73,7 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
     lazy var language : Language = languageForTesting()
     
     private func languageForTesting() -> Language {
-        let language = Language.standard
+        var language = Language.standard
         language.add(sort: Rank())
         language.add(sort: Suit())
         language.add(sort: Card())
@@ -287,10 +287,35 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(typeEnv: typeEnv, env: env, INT.Var(5) + INT.Var(7), result: 12)
         
         let lang1 = Language()
-        let lang2 = Language()
-        
+        var lang2 = Language()
         XCTAssertEqual(lang1, lang1)
+        XCTAssertEqual(lang1, lang2)
+
+        lang2.add(sort: BOOL())
+
         XCTAssertNotEqual(lang1, lang2)
+
+        var lang3 = lang1
+        lang3.add(sort: BOOL())
+
+        XCTAssertNotEqual(lang2, lang3)
+        XCTAssertFalse(lang2 < lang3)
+        XCTAssertFalse(lang3 < lang2)
+
+        XCTAssertEqual(Language.join(lang1, lang2), lang2)
+        XCTAssertNil(Language.join(lang2, lang3))
+
+        lang3 = lang2
+        lang3.add(sort: INT())
+
+        XCTAssertNotEqual(lang2, lang3)
+
+        XCTAssertEqual(Language.join(lang2, lang3), lang3)
+        XCTAssertTrue(lang1 < lang2)
+        XCTAssertTrue(lang1 < lang3)
+        XCTAssertTrue(lang2 < lang3)
+        XCTAssertFalse(lang3 < lang2)
+        XCTAssertFalse(lang3 < Language.standard)
     }
     
     func testTermStore() {
