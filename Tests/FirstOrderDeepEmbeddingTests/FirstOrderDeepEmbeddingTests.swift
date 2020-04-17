@@ -271,6 +271,23 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(player5.card2 == Card.default(), result: true)
         eval(player5.stack == 0, result: true)
     }
+    
+    func testArray() {
+        let array : ARRAY<INT> = [0, 2, 4]
+        eval(array.length, result: 3)
+        eval(array, result: [0, 2, 4])
+        eval(array.contains(2), result: true)
+        eval(array.contains(3), result: false)
+        eval(array + array, result: [0, 2, 4, 0, 2, 4])
+        eval(array == array, result: true)
+        eval(array != [], result: true)
+        eval(array + 7, result: [0, 2, 4, 7])
+        eval(array + [7], result: [0, 2, 4, 7])
+        eval(ARRAY<INT>.default(), result: [])
+        eval(array[0], result: 0)
+        eval(array[1], result: 2)
+        eval(array[2], result: 4)
+    }
         
     func testLanguage() {
         let X : INT = 10

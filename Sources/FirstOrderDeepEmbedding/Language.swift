@@ -197,6 +197,8 @@ public struct Language : Hashable, Comparable {
         language.add(sort: UNIT())
         language.add(sort: BOOL())
         language.add(sort: INT())
+        language.add(sort: ARRAY<INT>())
+        language.add(sort: ARRAY<BOOL>())
         return language
     }
         
