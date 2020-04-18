@@ -128,3 +128,33 @@ public final class CHAR : ASort, ExpressibleByIntegerLiteral, ExpressibleByStrin
     }
 
 }
+
+extension ARRAY : ExpressibleByStringLiteral, ExpressibleByExtendedGraphemeClusterLiteral, ExpressibleByUnicodeScalarLiteral where Elem == CHAR {
+
+    public typealias ExtendedGraphemeClusterLiteralType = String
+    
+    public typealias UnicodeScalarLiteralType = String
+    
+    public typealias StringLiteralType = String
+    
+    public convenience init(stringLiteral value: String) {
+        var characters : [Character] = []
+        for c in value {
+            characters.append(c)
+        }
+        self.init()
+        self.set(inhabitant: .Native(value: characters, sort: sortname))
+    }
+
+    public convenience init(extendedGraphemeClusterLiteral value: String) {
+        self.init(arrayLiteral: CHAR(extendedGraphemeClusterLiteral: value))
+    }
+    
+    public convenience init(unicodeScalarLiteral value: String) {
+        self.init(arrayLiteral: CHAR(unicodeScalarLiteral: value))
+    }
+    
+}
+
+public typealias STRING = ARRAY<CHAR>
+

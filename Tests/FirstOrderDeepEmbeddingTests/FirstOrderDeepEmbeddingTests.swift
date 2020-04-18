@@ -187,6 +187,9 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(match("b"), result: 2)
         eval(match("a"), result: 1)
         eval(match("z"), result: 0)
+        
+        let str : STRING = "abc"
+        eval(str, result: ["a", "b", "c"])
 
     }
     

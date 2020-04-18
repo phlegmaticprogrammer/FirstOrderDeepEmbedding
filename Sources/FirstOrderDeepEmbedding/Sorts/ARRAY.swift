@@ -102,4 +102,3 @@ public final class ARRAY<Elem : ASort> : ASort, ExpressibleByArrayLiteral {
     }
     
 }
-
