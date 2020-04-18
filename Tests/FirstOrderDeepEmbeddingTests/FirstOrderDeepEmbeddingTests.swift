@@ -158,6 +158,38 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(defaultINT, result: 0)
     }
     
+    func testCHAR() {
+        let space : CHAR = " "
+        eval(space, result: " ")
+        eval(space == " ", result: true)
+        eval(space == 32, result: true)
+        eval(space == CHAR.default(), result: true)
+        eval(space != "a", result: true)
+        let c : CHAR = "c"
+        eval("a" < c && c < "d", result: true)
+        eval("a" <= c && c <= "d", result: true)
+        eval(c >= "a" && "d" > c, result: true)
+        eval(CHAR.max("a", c), result: "c")
+        eval(CHAR.max("d", c), result: "d")
+        eval(CHAR.min("a", c), result: "a")
+        eval(CHAR.min("d", c), result: "c")
+        eval(c.in("a", "b", "c", "d"), result: true)
+        eval(c.in("a", "b", "e", "d"), result: false)
+        eval(c.inRange("a", "z"), result: true)
+        eval(c.inRange("a", "b"), result: false)
+        eval(c.inRange("z", "a"), result: false)
+
+        func match(_ c : CHAR) -> INT {
+            c.match("a" => 1, "b" => 2, "c" => 3)
+        }
+        
+        eval(match(c), result: 3)
+        eval(match("b"), result: 2)
+        eval(match("a"), result: 1)
+        eval(match("z"), result: 0)
+
+    }
+    
     func testUNIT() {
         eval(UNIT.unit, result: UNIT.singleton)
         eval(UNIT.from(UNIT.singleton), result: UNIT.singleton)
