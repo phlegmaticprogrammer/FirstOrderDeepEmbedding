@@ -39,9 +39,7 @@ public final class UNIT : ASort {
     override public func eval(name : ConstName, count : Int, nativeArgs : (Int) -> AnyHashable) -> AnyHashable {
         return Native()
     }
-    
-    public static let unit = UNIT(inhabitant: UNIT.h.T_unit)
-    
+        
     public static let singleton = Native()
     
 }

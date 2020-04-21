@@ -110,8 +110,4 @@ public final class BOOL : ASort, ExpressibleByBooleanLiteral {
         return t
     }
     
-    public static let True : BOOL = true
-    
-    public static let False : BOOL = false
-
 }

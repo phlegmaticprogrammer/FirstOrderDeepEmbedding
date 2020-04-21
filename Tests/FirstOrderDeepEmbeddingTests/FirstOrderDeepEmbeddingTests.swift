@@ -194,7 +194,8 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
     }
     
     func testUNIT() {
-        eval(UNIT.unit, result: UNIT.singleton)
+        let unit = UNIT.default()
+        eval(unit, result: UNIT.singleton)
         eval(UNIT.from(UNIT.singleton), result: UNIT.singleton)
     }
     
