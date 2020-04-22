@@ -48,13 +48,29 @@ public struct Signature : Hashable {
     }
 }
 
+/// A transient unique identifier.
+open class TUID : Hashable {
+    
+    public static func == (left: TUID, right: TUID) -> Bool {
+        return left === right
+    }
+    
+    public final func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
+    
+    /// Creates an unused transient unique identifier.
+    public init() {}
+    
+}
+
 public indirect enum Term : Hashable, CustomStringConvertible {
     
-    public typealias Id = TermStore.MutableId
-    
-    case Var(id : Id = Id(), name : VarName)
-    case Native(id : Id = Id(), value : AnyHashable, sort : SortName)
-    case App(id : Id = Id(), const : ConstName, args : [Term])
+    public typealias Id = TUID
+        
+    case Var(id : TUID = TUID(), name : VarName)
+    case Native(id : TUID = TUID(), value : AnyHashable, sort : SortName)
+    case App(id : TUID = TUID(), const : ConstName, args : [Term])
     
     public var description : String {
         switch self {

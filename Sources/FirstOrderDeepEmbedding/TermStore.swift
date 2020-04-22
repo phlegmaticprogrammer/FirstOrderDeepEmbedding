@@ -13,44 +13,12 @@ public indirect enum StoredTerm : Hashable {
 public class TermStore {
     
     public typealias Id = Int
-    
-    public class MutableId : Hashable {
         
-        private var _id : Id?
-        
-        public init() {
-            self._id = nil
-        }
-        
-        public static func == (left : MutableId, right : MutableId) -> Bool {
-            return left._id == right._id
-        }
-        
-        public var id : Id {
-            return _id!
-        }
-        
-        public func hash(into hasher: inout Hasher) {
-            hasher.combine(_id)
-        }
-        
-        public var isDefined : Bool {
-            return _id != nil
-        }
-                
-        func set(_ compute : @autoclosure () throws -> Id) rethrows -> Id {
-            if _id != nil {
-                return _id!
-            }
-            _id = try compute()
-            return _id!
-        }
-        
-    }
-    
     private var idOfStoredTerms : [StoredTerm : Id] = [:]
     
     private var storedTerms : [StoredTerm] = []
+    
+    private var alreadyStored : [Term.Id : Id] = [:]
     
     public init() {}
     
@@ -119,14 +87,21 @@ public class TermStore {
         return compute(id)
     }
     
+    private func set(_ id : Term.Id, stored : @autoclosure () -> StoredTerm) -> Id {
+        if let storeId = alreadyStored[id] { return storeId }
+        let storeId = store(stored: stored())
+        alreadyStored[id] = storeId
+        return storeId
+    }
+    
     public func store(_ term : Term) -> Id {
         switch term {
         case let .App(id: id, const: constname, args: args):
-            return id.set(store(stored: .App(const: constname, args: args.map(store))))
+            return set(id, stored: .App(const: constname, args: args.map(store)))
         case let .Native(id: id, value: value, sort: sortname):
-            return id.set(store(stored: .Native(value: value, sort: sortname)))
+            return set(id, stored: .Native(value: value, sort: sortname))
         case let .Var(id: id, name: name):
-            return id.set(store(stored: .Var(name: name)))
+            return set(id, stored: .Var(name: name))
         }
     }
     
