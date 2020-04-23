@@ -79,6 +79,10 @@ public final class INT : ASort, ExpressibleByIntegerLiteral {
     }
         
     override public func eval(name : ConstName, count : Int, nativeArgs : (Int) -> AnyHashable) -> AnyHashable {
+        var args : [Any] = []
+        for i in 0 ..< count {
+            args.append(nativeArgs(i))
+        }
         switch name.code {
         case INT.h.C_uminus.code: return -(nativeArgs(0) as! Native)
         case INT.h.C_plus.code: return (nativeArgs(0) as! Native) + (nativeArgs(1) as! Native)
