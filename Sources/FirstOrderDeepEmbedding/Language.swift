@@ -214,9 +214,16 @@ public struct Language : Hashable, Comparable {
         language.add(sort: BOOL())
         language.add(sort: INT())
         language.add(sort: CHAR())
+        language.add(sort: STRING())
+        language.add(sort: ARRAY<UNIT>())
         language.add(sort: ARRAY<BOOL>())
         language.add(sort: ARRAY<INT>())
-        language.add(sort: ARRAY<CHAR>())
+        language.add(sort: ARRAY<STRING>())
+        language.add(sort: OPTIONAL<UNIT>())
+        language.add(sort: OPTIONAL<BOOL>())
+        language.add(sort: OPTIONAL<INT>())
+        language.add(sort: OPTIONAL<CHAR>())
+        language.add(sort: OPTIONAL<STRING>())
         return language
     }
         
