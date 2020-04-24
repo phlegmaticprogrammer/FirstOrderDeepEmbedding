@@ -101,19 +101,19 @@ public final class OPTIONAL<Elem : ASort> : ASort, ExpressibleByNilLiteral {
         return !BOOL.equals(left, right)
     }
 
-    public static func == (left : OPTIONAL<Elem>, right : Elem.Native?) -> BOOL {
+    public static func == (left : OPTIONAL<Elem>, right : Elem.Native) -> BOOL {
         return BOOL.equals(left, OPTIONAL(right))
     }
 
-    public static func == (left : Elem.Native?, right : OPTIONAL<Elem>) -> BOOL {
+    public static func == (left : Elem.Native, right : OPTIONAL<Elem>) -> BOOL {
         return BOOL.equals(OPTIONAL(left), right)
     }
 
-    public static func != (left : OPTIONAL<Elem>, right : Elem.Native?) -> BOOL {
+    public static func != (left : OPTIONAL<Elem>, right : Elem.Native) -> BOOL {
         return !BOOL.equals(left, OPTIONAL(right))
     }
 
-    public static func != (left : Elem.Native?, right : OPTIONAL<Elem>) -> BOOL {
+    public static func != (left : Elem.Native, right : OPTIONAL<Elem>) -> BOOL {
         return !BOOL.equals(OPTIONAL(left), right)
     }
     

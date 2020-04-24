@@ -324,6 +324,29 @@ final class FirstOrderDeepEmbeddingTests: XCTestCase {
         eval(array[1], result: 2)
         eval(array[2], result: 4)
     }
+    
+    func testOPTIONAL() {
+        let x = OPTIONAL<INT>(7)
+        let y : OPTIONAL<INT> = nil
+        eval(x ?? 8, result: 7)
+        eval(y ?? 8, result: 8)
+        eval(x == nil, result: false)
+        eval(y == nil, result: true)
+        eval(nil == x, result: false)
+        eval(nil == y, result: true)
+        eval(x == 7, result: true)
+        eval(7 == x, result: true)
+        eval(x != 8, result: true)
+        eval(8 != x, result: true)
+        eval(y == 7, result: false)
+        eval(8 != y, result: true)
+        eval(x == y, result: false)
+        eval(x != y, result: true)
+        let ix = OPTIONAL(x.get)
+        eval(ix == x, result: true)
+        eval(ix == y, result: false)
+        eval(OPTIONAL<INT>.default() == nil, result: true)
+    }
         
     func testLanguage() {
         let X : INT = 10
