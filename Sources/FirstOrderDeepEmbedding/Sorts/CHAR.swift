@@ -44,6 +44,18 @@ public final class CHAR : ASort, ExpressibleByIntegerLiteral, ExpressibleByStrin
         let character = Native(stringLiteral)
         set(inhabitant: .Native(value: character, sort: sortname))
     }
+    
+    public convenience init(_ native : Native) {
+        self.init(stringLiteral: String(native))
+    }
+    
+    public convenience init(_ str : String) {
+        self.init(stringLiteral: str)
+    }
+    
+    public convenience init(_ codepoint : Int) {
+        self.init(integerLiteral: codepoint)
+    }
 
     public override func setDefaultInhabitant() {
         set(inhabitant: .Native(value: Native(" "), sort: sortname))
