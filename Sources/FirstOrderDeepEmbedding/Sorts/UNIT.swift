@@ -14,7 +14,7 @@ public final class UNIT : ASort {
     
     private static let h = H()
             
-    public struct Native : Hashable {}
+    public struct Native : Hashable, Codable {}
         
     public required init() {
         super.init()
