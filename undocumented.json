@@ -1,0 +1,1909 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 1,
+      "symbol": "ComputationOnTerms",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 3,
+      "symbol": "ComputationOnTerms.Result",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 5,
+      "symbol": "ComputationOnTerms.computeVar(name:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 7,
+      "symbol": "ComputationOnTerms.computeNative(value:sort:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 9,
+      "symbol": "ComputationOnTerms.computeApp(const:count:args:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 15,
+      "symbol": "Term.compute(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 36,
+      "symbol": "ComputedResultsOfStoredTerms",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 38,
+      "symbol": "ComputedResultsOfStoredTerms.Result",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 40,
+      "symbol": "ComputedResultsOfStoredTerms.compute(id:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 46,
+      "symbol": "TermStore.computeAll(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 68,
+      "symbol": "TermStore.Results",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 72,
+      "symbol": "TermStore.Results.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 76,
+      "symbol": "TermStore.Results.compute(id:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 86,
+      "symbol": "TermStore.Results.subscript(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.subscript",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 92,
+      "symbol": "TermStore.compute(_:results:id:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computation.swift",
+      "line": 106,
+      "symbol": "TermStore.compute(_:id:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/Eval.swift",
+      "line": 1,
+      "symbol": "Eval",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/Eval.swift",
+      "line": 3,
+      "symbol": "Eval.Result",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/Eval.swift",
+      "line": 8,
+      "symbol": "Eval.init(language:environment:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/Eval.swift",
+      "line": 13,
+      "symbol": "Eval.computeVar(name:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/Eval.swift",
+      "line": 17,
+      "symbol": "Eval.computeNative(value:sort:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/Eval.swift",
+      "line": 21,
+      "symbol": "Eval.computeApp(const:count:args:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/SortOf.swift",
+      "line": 1,
+      "symbol": "SortOf",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/SortOf.swift",
+      "line": 3,
+      "symbol": "SortOf.Result",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/SortOf.swift",
+      "line": 8,
+      "symbol": "SortOf.init(language:environment:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/SortOf.swift",
+      "line": 13,
+      "symbol": "SortOf.computeVar(name:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/SortOf.swift",
+      "line": 17,
+      "symbol": "SortOf.computeNative(value:sort:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/SortOf.swift",
+      "line": 23,
+      "symbol": "SortOf.computeApp(const:count:args:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/Substitution.swift",
+      "line": 1,
+      "symbol": "Substitution",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/Substitution.swift",
+      "line": 3,
+      "symbol": "Substitution.Result",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/Substitution.swift",
+      "line": 7,
+      "symbol": "Substitution.init(substitution:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/Substitution.swift",
+      "line": 11,
+      "symbol": "Substitution.computeVar(name:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/Substitution.swift",
+      "line": 19,
+      "symbol": "Substitution.computeNative(value:sort:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/Substitution.swift",
+      "line": 23,
+      "symbol": "Substitution.computeApp(const:count:args:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/VarNamesOf.swift",
+      "line": 1,
+      "symbol": "VarNamesOf",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/VarNamesOf.swift",
+      "line": 3,
+      "symbol": "VarNamesOf.Result",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/VarNamesOf.swift",
+      "line": 5,
+      "symbol": "VarNamesOf.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/VarNamesOf.swift",
+      "line": 7,
+      "symbol": "VarNamesOf.computeVar(name:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/VarNamesOf.swift",
+      "line": 11,
+      "symbol": "VarNamesOf.computeNative(value:sort:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Computations/VarNamesOf.swift",
+      "line": 15,
+      "symbol": "VarNamesOf.computeApp(const:count:args:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 1,
+      "symbol": "SortName",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 3,
+      "symbol": "ConstName",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 4,
+      "symbol": "ConstName.sort",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 5,
+      "symbol": "ConstName.name",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 6,
+      "symbol": "ConstName.code",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 8,
+      "symbol": "ConstName.init(sort:name:code:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 13,
+      "symbol": "Term",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 28,
+      "symbol": "VarName",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 30,
+      "symbol": "Signature",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 32,
+      "symbol": "Signature.T",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 33,
+      "symbol": "Signature.T.monomorph(name:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 34,
+      "symbol": "Signature.T.polymorph",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 37,
+      "symbol": "Signature.args",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 38,
+      "symbol": "Signature.result",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 40,
+      "symbol": "Signature.init(args:result:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 45,
+      "symbol": "Signature.init(args:result:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 67,
+      "symbol": "Term",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 69,
+      "symbol": "Term.Id",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 71,
+      "symbol": "Term.Var(id:name:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 72,
+      "symbol": "Term.Native(id:value:sort:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 73,
+      "symbol": "Term.App(id:const:args:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 99,
+      "symbol": "Environment",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 101,
+      "symbol": "Language",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 111,
+      "symbol": "Language.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 116,
+      "symbol": "Language.sorts",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 124,
+      "symbol": "Language.join(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 146,
+      "symbol": "Language.add(sort:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 159,
+      "symbol": "Language.isValid(sort:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 163,
+      "symbol": "Language.sortOf(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 167,
+      "symbol": "Language.signatureOf(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 178,
+      "symbol": "Language.isValid(signature:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 188,
+      "symbol": "Language.check(env:term:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 193,
+      "symbol": "Language.check(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 199,
+      "symbol": "Language.eval(env:term:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 203,
+      "symbol": "Language.eval(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 207,
+      "symbol": "Language.varNamesOf(term:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Language.swift",
+      "line": 230,
+      "symbol": "Language.standard",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 5,
+      "symbol": "Sort",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 9,
+      "symbol": "Sort.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 18,
+      "symbol": "Sort.set(inhabitant:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 25,
+      "symbol": "Sort.setDefaultInhabitant()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 29,
+      "symbol": "Sort.sortname",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 33,
+      "symbol": "Sort.isInhabited",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 37,
+      "symbol": "Sort.inhabitant",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 41,
+      "symbol": "Sort.constants",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 45,
+      "symbol": "Sort.isValid(nativeValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 49,
+      "symbol": "Sort.eval(name:count:nativeArgs:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 53,
+      "symbol": "Sort.fatalEval(_:_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 57,
+      "symbol": "Sort.default()",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 63,
+      "symbol": "Sort.Var(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 69,
+      "symbol": "Sort.unpack(count:args:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 75,
+      "symbol": "SortMakingHelper",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 77,
+      "symbol": "SortMakingHelper.sortname",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 79,
+      "symbol": "SortMakingHelper.constants",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 81,
+      "symbol": "SortMakingHelper.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 94,
+      "symbol": "SortMakingHelper.add(op:args:result:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 102,
+      "symbol": "SortMakingHelper.add(name:result:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 109,
+      "symbol": "HasAssociatedNativeType",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 111,
+      "symbol": "HasAssociatedNativeType.Native",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 113,
+      "symbol": "HasAssociatedNativeType.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 115,
+      "symbol": "HasAssociatedNativeType.set(inhabitant:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 117,
+      "symbol": "HasAssociatedNativeType.sortname",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 121,
+      "symbol": "HasAssociatedNativeType",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 123,
+      "symbol": "HasAssociatedNativeType.from(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sort.swift",
+      "line": 131,
+      "symbol": "ASort",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 1,
+      "symbol": "ARRAY",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 3,
+      "symbol": "ARRAY.Native",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 31,
+      "symbol": "ARRAY.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 44,
+      "symbol": "ARRAY.setDefaultInhabitant()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 48,
+      "symbol": "ARRAY.isValid(nativeValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 52,
+      "symbol": "ARRAY.sortname",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 56,
+      "symbol": "ARRAY.constants",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 60,
+      "symbol": "ARRAY.eval(name:count:nativeArgs:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 74,
+      "symbol": "ARRAY.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 78,
+      "symbol": "ARRAY.!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 82,
+      "symbol": "ARRAY.+(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 86,
+      "symbol": "ARRAY.+(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 90,
+      "symbol": "ARRAY.contains(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 94,
+      "symbol": "ARRAY.length",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 98,
+      "symbol": "ARRAY.subscript(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.subscript",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/ARRAY.swift",
+      "line": 144,
+      "symbol": "ARRAY",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 1,
+      "symbol": "BOOL",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 5,
+      "symbol": "BOOL.Native",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 40,
+      "symbol": "BOOL.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 49,
+      "symbol": "BOOL.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 54,
+      "symbol": "BOOL.setDefaultInhabitant()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 58,
+      "symbol": "BOOL.isValid(nativeValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 62,
+      "symbol": "BOOL.sortname",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 66,
+      "symbol": "BOOL.constants",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 70,
+      "symbol": "BOOL.eval(name:count:nativeArgs:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 83,
+      "symbol": "BOOL.equals(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 87,
+      "symbol": "BOOL.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 91,
+      "symbol": "BOOL.!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 95,
+      "symbol": "BOOL.!(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 99,
+      "symbol": "BOOL.&&(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 103,
+      "symbol": "BOOL.||(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/BOOL.swift",
+      "line": 107,
+      "symbol": "BOOL.If(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 1,
+      "symbol": "CHAR",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 7,
+      "symbol": "CHAR.Native",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 32,
+      "symbol": "CHAR.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 48,
+      "symbol": "CHAR.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 52,
+      "symbol": "CHAR.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 56,
+      "symbol": "CHAR.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 60,
+      "symbol": "CHAR.setDefaultInhabitant()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 64,
+      "symbol": "CHAR.isValid(nativeValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 68,
+      "symbol": "CHAR.sortname",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 72,
+      "symbol": "CHAR.constants",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 76,
+      "symbol": "CHAR.eval(name:count:nativeArgs:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 86,
+      "symbol": "CHAR.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 90,
+      "symbol": "CHAR.!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 94,
+      "symbol": "CHAR.<=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 98,
+      "symbol": "CHAR.<(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 102,
+      "symbol": "CHAR.>=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 106,
+      "symbol": "CHAR.>(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 110,
+      "symbol": "CHAR.min(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 114,
+      "symbol": "CHAR.max(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 118,
+      "symbol": "CHAR.in(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 126,
+      "symbol": "CHAR.in(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 130,
+      "symbol": "CHAR.inRange(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 134,
+      "symbol": "CHAR.match(_:default:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/CHAR.swift",
+      "line": 171,
+      "symbol": "STRING",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Case.swift",
+      "line": 3,
+      "symbol": "Case",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Case.swift",
+      "line": 4,
+      "symbol": "Case.pattern",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Case.swift",
+      "line": 6,
+      "symbol": "Case.result",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Case.swift",
+      "line": 8,
+      "symbol": "Case.init(pattern:result:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Case.swift",
+      "line": 14,
+      "symbol": "=>(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 1,
+      "symbol": "Enumeration",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 3,
+      "symbol": "Enumeration.Native",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 5,
+      "symbol": "Enumeration.Case(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 11,
+      "symbol": "Enumeration.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 15,
+      "symbol": "Enumeration.constants",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 17,
+      "symbol": "Enumeration.isValid(nativeValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 21,
+      "symbol": "Enumeration.sortname",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 25,
+      "symbol": "Enumeration.setDefaultInhabitant()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 30,
+      "symbol": "Enumeration.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 34,
+      "symbol": "Enumeration.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 38,
+      "symbol": "Enumeration.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 42,
+      "symbol": "Enumeration.!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 46,
+      "symbol": "Enumeration.!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 50,
+      "symbol": "Enumeration.!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 54,
+      "symbol": "Enumeration.eval(name:count:nativeArgs:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 58,
+      "symbol": "Enumeration.in(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 66,
+      "symbol": "Enumeration.in(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Enumeration.swift",
+      "line": 70,
+      "symbol": "Enumeration.match(_:default:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 1,
+      "symbol": "INT",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 5,
+      "symbol": "INT.Native",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 51,
+      "symbol": "INT.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 60,
+      "symbol": "INT.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 65,
+      "symbol": "INT.setDefaultInhabitant()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 69,
+      "symbol": "INT.isValid(nativeValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 73,
+      "symbol": "INT.sortname",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 77,
+      "symbol": "INT.constants",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 81,
+      "symbol": "INT.eval(name:count:nativeArgs:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 100,
+      "symbol": "INT.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 104,
+      "symbol": "INT.!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 108,
+      "symbol": "INT.-(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 112,
+      "symbol": "INT.+(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 116,
+      "symbol": "INT.-(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 120,
+      "symbol": "INT.*(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 124,
+      "symbol": "INT./(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 128,
+      "symbol": "INT.%(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 132,
+      "symbol": "INT.<=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 136,
+      "symbol": "INT.<(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 140,
+      "symbol": "INT.>=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 144,
+      "symbol": "INT.>(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 148,
+      "symbol": "INT.IfNegative(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 152,
+      "symbol": "INT.min(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 156,
+      "symbol": "INT.max(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 160,
+      "symbol": "INT.in(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 168,
+      "symbol": "INT.in(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 172,
+      "symbol": "INT.inRange(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/INT.swift",
+      "line": 176,
+      "symbol": "INT.match(_:default:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 1,
+      "symbol": "OPTIONAL",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 3,
+      "symbol": "OPTIONAL.Optional",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 4,
+      "symbol": "OPTIONAL.Optional.None",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 5,
+      "symbol": "OPTIONAL.Optional.Some(elem:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 23,
+      "symbol": "OPTIONAL.Native",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 43,
+      "symbol": "OPTIONAL.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 47,
+      "symbol": "OPTIONAL.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 52,
+      "symbol": "OPTIONAL.init(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 62,
+      "symbol": "OPTIONAL.setDefaultInhabitant()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 66,
+      "symbol": "OPTIONAL.isValid(nativeValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 70,
+      "symbol": "OPTIONAL.sortname",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 74,
+      "symbol": "OPTIONAL.constants",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 78,
+      "symbol": "OPTIONAL.eval(name:count:nativeArgs:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 96,
+      "symbol": "OPTIONAL.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 100,
+      "symbol": "OPTIONAL.!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 104,
+      "symbol": "OPTIONAL.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 108,
+      "symbol": "OPTIONAL.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 112,
+      "symbol": "OPTIONAL.!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 116,
+      "symbol": "OPTIONAL.!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 120,
+      "symbol": "OPTIONAL.??(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/OPTIONAL.swift",
+      "line": 126,
+      "symbol": "OPTIONAL.get",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 8,
+      "symbol": "Field",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 16,
+      "symbol": "Field.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 18,
+      "symbol": "Field.wrappedValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 29,
+      "symbol": "Record",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 36,
+      "symbol": "Record.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 49,
+      "symbol": "Record.sortname",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 53,
+      "symbol": "Record.fields",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 57,
+      "symbol": "Record.set(inhabitant:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 69,
+      "symbol": "Record.setDefaultInhabitant()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 97,
+      "symbol": "Record.constants",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 112,
+      "symbol": "Record.Native",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 114,
+      "symbol": "Record.isValid(nativeValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 124,
+      "symbol": "Record.==(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 128,
+      "symbol": "Record.!=(_:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/Record.swift",
+      "line": 132,
+      "symbol": "Record.eval(name:count:nativeArgs:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/UNIT.swift",
+      "line": 1,
+      "symbol": "UNIT",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/UNIT.swift",
+      "line": 17,
+      "symbol": "UNIT.Native",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/UNIT.swift",
+      "line": 19,
+      "symbol": "UNIT.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/UNIT.swift",
+      "line": 23,
+      "symbol": "UNIT.setDefaultInhabitant()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/UNIT.swift",
+      "line": 27,
+      "symbol": "UNIT.isValid(nativeValue:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/UNIT.swift",
+      "line": 31,
+      "symbol": "UNIT.sortname",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/UNIT.swift",
+      "line": 35,
+      "symbol": "UNIT.constants",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/UNIT.swift",
+      "line": 39,
+      "symbol": "UNIT.eval(name:count:nativeArgs:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/Sorts/UNIT.swift",
+      "line": 43,
+      "symbol": "UNIT.singleton",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 1,
+      "symbol": "StoredTerm",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 3,
+      "symbol": "StoredTerm.Id",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 5,
+      "symbol": "StoredTerm.Var(name:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 7,
+      "symbol": "StoredTerm.Native(value:sort:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 9,
+      "symbol": "StoredTerm.App(const:args:)",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 13,
+      "symbol": "TermStore",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 15,
+      "symbol": "TermStore.Id",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 23,
+      "symbol": "TermStore.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 25,
+      "symbol": "TermStore.subscript(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.subscript",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 29,
+      "symbol": "TermStore.subscript(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.subscript",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 33,
+      "symbol": "TermStore.count",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 44,
+      "symbol": "TermStore",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 68,
+      "symbol": "TermStore.size(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 72,
+      "symbol": "TermStore.storedSize(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding/Sources/FirstOrderDeepEmbedding/TermStore.swift",
+      "line": 97,
+      "symbol": "TermStore.store(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/runner/work/FirstOrderDeepEmbedding/FirstOrderDeepEmbedding"
+}
